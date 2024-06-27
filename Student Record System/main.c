@@ -24,19 +24,20 @@ int main(void) {
 
 
 
-    //scanf("%s", firstName, "\n" , lastName);
+    // printf("This is a test code to confirm forking and committing on Github - Sowl")
 
 
 
 
-    /*
-     * printf("Hello, World!\n  ");
-     * printf("my favourite %s is  %d", "Digit");
-     * "%s = string character";
-     * %c = character ;
-     * "%d = integers";
-     * "%f = float, double";
-     * "%lf = float, double when using scan()";
-    */
+     /*
+      * scanf("%s", firstName, "\n" , lastName);
+      * printf("Hello, World!\n  ");
+      * printf("my favourite %s is  %d", "Digit");
+      * "%s = string character";
+      * %c = character ;
+      * "%d = integers";
+      * "%f = float, double";
+      * "%lf = float, double when using scan()";
+     */
     return 0;
 }
