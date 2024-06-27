@@ -1,3 +1,5 @@
+**NB:** This project was initiated using IntelliJ IDEA CLion IDE. An open-source IDE of JetBrains (https://www.jetbrains.com/clion/).
+
 **Project Title: Student Record System**.
 
 A simple Student Record System in C that allows users to manage student information. The program has the following functionality:
