@@ -2,6 +2,8 @@
 #include <string.h>
 
 int main(void) {
+
+/* SOLOMON's Code: Question 1 & 2
     // Variable, Data-type declaration
     char programName[] = "Interactive Student Record System v1.0";
     char firstName[15];
@@ -26,9 +28,6 @@ int main(void) {
 
 
 
-
-
-
     /* Ignored Ideas (ignore this portion)
      * //scanf("%s", firstName, "\n" , lastName);
      * printf("Hello, World!\n  ");
@@ -39,5 +38,31 @@ int main(void) {
      * "%f = float, double";
      * "%lf = float, double when using scan()";
     */
+
+
+        // Okon's Code: Question 1 & 2
+        printf("Hello and welcome to the Student Record System!\n");
+
+        char name[20];
+        printf("Please tell me your name: ");
+        fgets(name, 20, stdin);
+        printf("Good day %s", name);
+
+        char studentName[20];
+        int rollNum[1000];
+        double marks[1000];
+
+
+
+
+
+
+
+
+
+
+
+
+
     return 0;
 }
