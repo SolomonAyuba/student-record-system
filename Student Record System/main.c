@@ -1,43 +1,20 @@
 #include <stdio.h>
-#include <string.h>
 
-int main(void) {
-    // Variable, Data-type declaration
-    char programName[] = "Interactive Student Record System v1.0";
-    char firstName[15];
-    char lastName[15];
-    char userName[30];
+int main() {
 
-    // Displays welcome message and prompts the user to enter their full name. Then greets the user by their full name
-    printf("Welcome to the %s \n Please enter your name to proceed \n", programName);
-    printf("First Name: ");
-    fgets(firstName, 15, stdin);
+    printf("Hello and welcome to the Student Record System!\n");
 
-    printf("Last Name: ");
-    fgets(lastName, 15, stdin);
+    char name[20];
+    printf("Please tell me your name: ");
+    fgets(name, 20, stdin);
+    printf("Good day %s", name);
 
-    strcpy(userName, firstName);
-    //strcat(userName, " ");
-    strcat(userName, lastName);
-    printf("\n");
-    printf("Good day!, %s", userName);
-
-
-
-    // printf("This is a test code to confirm forking and committing on Github - Sowl")
+    char studentName[20];
+    int rollNum[1000];
+    double marks[1000];
 
 
 
 
-     /*
-      * scanf("%s", firstName, "\n" , lastName);
-      * printf("Hello, World!\n  ");
-      * printf("my favourite %s is  %d", "Digit");
-      * "%s = string character";
-      * %c = character ;
-      * "%d = integers";
-      * "%f = float, double";
-      * "%lf = float, double when using scan()";
-     */
     return 0;
 }

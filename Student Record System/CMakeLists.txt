@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.28)
-project(Lab C)
+project(Student_Record_System C)
 
-set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD 99)
 
-add_executable(Lab main.c
-)
+add_executable(Student_Record_System main.c)
