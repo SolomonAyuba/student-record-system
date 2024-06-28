@@ -9,7 +9,8 @@ int main(void) {
     char userName[30];
 
     // Displays welcome message and prompts the user to enter their full name. Then greets the user by their full name
-    printf("Welcome to the %s \n Please enter your name to proceed \n", programName);
+    printf("Hello, Welcome to the %s \n Please enter your name to proceed \n", programName);
+
     printf("First Name: ");
     fgets(firstName, 15, stdin);
 
@@ -19,17 +20,17 @@ int main(void) {
     strcpy(userName, firstName);
     //strcat(userName, " ");
     strcat(userName, lastName);
-    printf("\n");
+    printf("\n");  // Inserts space before next code
     printf("Good day!, %s", userName);
 
 
 
-    //scanf("%s", firstName, "\n" , lastName);
 
 
 
 
-    /*
+    /* Ignored Ideas (ignore this portion)
+     * //scanf("%s", firstName, "\n" , lastName);
      * printf("Hello, World!\n  ");
      * printf("my favourite %s is  %d", "Digit");
      * "%s = string character";

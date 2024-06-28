@@ -3,5 +3,5 @@ project(Lab C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(Lab main.c
+add_executable(Lab Solomonmain.c
 )
