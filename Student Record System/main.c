@@ -52,7 +52,7 @@ int main(void) {
         int rollNum[1000];
         double marks[1000];
 
-        printf("Testing a version for okon bla bla\n");
+        printf("Testing a version for okon bla bla, have a nice day\n");
 
 
 
