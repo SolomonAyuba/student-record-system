@@ -54,16 +54,5 @@ int main(void) {
 
         printf("Testing a version for christine, have a nice day\n");
 
-
-
-
-
-
-
-
-
-
-
-
-    return 0;
+        return 0;
 }
