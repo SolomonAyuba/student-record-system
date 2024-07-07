@@ -1,4 +1,13 @@
-/Users/solomonayuba/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Users/solomonayuba/Applications/CLion.app/Contents/bin/ninja/mac/aarch64/ninja -G Ninja -S "/Users/solomonayuba/Documents/Docs/School /Miva Open University/Data Science Program/200 Level Semester 1/Mon - Computer Programming 1 - COS 201/Assignment/Lab/Student Record System" -B "/Users/solomonayuba/Documents/Docs/School /Miva Open University/Data Science Program/200 Level Semester 1/Mon - Computer Programming 1 - COS 201/Assignment/Lab/Student Record System/cmake-build-debug"
+/Users/solomonayuba/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S "/Users/solomonayuba/Desktop/Student Record System/Student Record System" -B "/Users/solomonayuba/Desktop/Student Record System/Student Record System/cmake-build-debug"
+CMake Deprecation Warning:
+  Support for "Extra Generators" like
+
+    CodeBlocks
+
+  is deprecated and will be removed from a future version of CMake.  IDEs may
+  use the cmake-file-api(7) to view CMake-generated project build trees.
+
+
 -- Configuring done (0.0s)
 -- Generating done (0.0s)
--- Build files have been written to: /Users/solomonayuba/Documents/Docs/School /Miva Open University/Data Science Program/200 Level Semester 1/Mon - Computer Programming 1 - COS 201/Assignment/Lab/Student Record System/cmake-build-debug
+-- Build files have been written to: /Users/solomonayuba/Desktop/Student Record System/Student Record System/cmake-build-debug

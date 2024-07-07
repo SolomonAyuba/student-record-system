@@ -1,3 +1,3 @@
-/Users/solomonayuba/Documents/Docs/School /Miva Open University/Data Science Program/200 Level Semester 1/Mon - Computer Programming 1 - COS 201/Assignment/Lab/Student Record System/cmake-build-debug/CMakeFiles/Lab.dir
-/Users/solomonayuba/Documents/Docs/School /Miva Open University/Data Science Program/200 Level Semester 1/Mon - Computer Programming 1 - COS 201/Assignment/Lab/Student Record System/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/solomonayuba/Documents/Docs/School /Miva Open University/Data Science Program/200 Level Semester 1/Mon - Computer Programming 1 - COS 201/Assignment/Lab/Student Record System/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/solomonayuba/Desktop/Student Record System/Student Record System/cmake-build-debug/CMakeFiles/Lab.dir
+/Users/solomonayuba/Desktop/Student Record System/Student Record System/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/solomonayuba/Desktop/Student Record System/Student Record System/cmake-build-debug/CMakeFiles/rebuild_cache.dir
