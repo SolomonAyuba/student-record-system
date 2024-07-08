@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+
+/* SOLOMON's Code: Question 1 & 2
+    // Variable, Data-type declaration
+    char programName[] = "Interactive Student Record System v1.0";
+    char firstName[15];
+    char lastName[15];
+    char userName[30];
+
+    // Displays welcome message and prompts the user to enter their full name. Then greets the user by their full name
+    printf("Hello, Welcome to the %s \n Please enter your name to proceed \n", programName);
+
+    printf("First Name: ");
+    fgets(firstName, 15, stdin);
+
+    printf("Last Name: ");
+    fgets(lastName, 15, stdin);
+
+    strcpy(userName, firstName);
+    //strcat(userName, " ");
+    strcat(userName, lastName);
+    printf("\n");  // Inserts space before next code
+    printf("Good day!, %s", userName);
+
+
+
+
+    /* Ignored Ideas (ignore this portion)
+     * //scanf("%s", firstName, "\n" , lastName);
+     * printf("Hello, World!\n  ");
+     * printf("my favourite %s is  %d", "Digit");
+     * "%s = string character";
+     * %c = character ;
+     * "%d = integers";
+     * "%f = float, double";
+     * "%lf = float, double when using scan()";
+    */
+
+
+        // Okon's Code: Question 1 & 2
+        printf("Hello and welcome to the Student Record System!\n");
+
+        char name[20];
+        printf("Please tell me your name: ");
+        fgets(name, 20, stdin);
+        printf("Good day %s", name);
+
+        char studentName[20];
+        int rollNum[1000];
+        double marks[1000];
+
+        printf("Testing a version for christine, have a nice day\n");
+        printf("This is a demo for Able Inception");
+        return 0;
+}

@@ -88,6 +88,7 @@ int main(void) {
     char programName[50] = "Interactive Student Record System v1.0";
     printf("Hello, Welcome to the %s\n", programName);
 
+
     struct Student students[100]; // Array to store up to 100 students
     int studentCount = 0;
 
@@ -108,7 +109,7 @@ int main(void) {
 
     printf("\nYou entered data for %d students.\n", studentCount);
 
-    // we attempte question 4b and the rest from here onwardsddssss
+    // we attempt question 4b and the rest from here onwardsddssss
 
 
     return 0;
