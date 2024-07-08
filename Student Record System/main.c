@@ -108,5 +108,8 @@ int main(void) {
 
     printf("\nYou entered data for %d students.\n", studentCount);
 
+    // we attempte question 4b and the rest from here onwards
+
+
     return 0;
 }
