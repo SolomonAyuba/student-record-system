@@ -94,11 +94,20 @@ int main(void) {
         if (student1.marks[i] >= student1.passMark) {
             printf("You passed: %s\n", student1.courses[i]);
         } else {
-            printf("Sorry, you failed this course: %s\n", student1.courses[i]);
+            printf("Sorry, you failed : %s\n", student1.courses[i]);
         }
     }
 
-
+    /*
+     * Functionality 4: Student Records Management Phase
+     * In this section:
+     * 🧹 We implement a loop that allows students to input information for multiple students until
+     *    the student decides to exit.
+     * 🧹 Create an array to store information for multiple students, with the ability to add, remove,
+     *      and modify student records.
+     * 🧹 Implement functions for adding, modifying, and displaying student records. Ensuring these functions take
+     *      appropriate arguments and return relevant information.
+     */
 
 
 
