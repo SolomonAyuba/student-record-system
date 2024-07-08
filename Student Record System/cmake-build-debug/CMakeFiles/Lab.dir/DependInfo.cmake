@@ -8,7 +8,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/solomonayuba/Desktop/Student Record System/Student Record System/SA.c" "CMakeFiles/Lab.dir/SA.c.o" "gcc" "CMakeFiles/Lab.dir/SA.c.o.d"
   "/Users/solomonayuba/Desktop/Student Record System/Student Record System/main.c" "CMakeFiles/Lab.dir/main.c.o" "gcc" "CMakeFiles/Lab.dir/main.c.o.d"
   )
 

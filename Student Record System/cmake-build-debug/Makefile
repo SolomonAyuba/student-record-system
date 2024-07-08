@@ -129,30 +129,6 @@ Lab/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lab.dir/build.make CMakeFiles/Lab.dir/build
 .PHONY : Lab/fast
 
-SA.o: SA.c.o
-.PHONY : SA.o
-
-# target to build an object file
-SA.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lab.dir/build.make CMakeFiles/Lab.dir/SA.c.o
-.PHONY : SA.c.o
-
-SA.i: SA.c.i
-.PHONY : SA.i
-
-# target to preprocess a source file
-SA.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lab.dir/build.make CMakeFiles/Lab.dir/SA.c.i
-.PHONY : SA.c.i
-
-SA.s: SA.c.s
-.PHONY : SA.s
-
-# target to generate assembly for a file
-SA.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lab.dir/build.make CMakeFiles/Lab.dir/SA.c.s
-.PHONY : SA.c.s
-
 main.o: main.c.o
 .PHONY : main.o
 
@@ -186,9 +162,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Lab"
-	@echo "... SA.o"
-	@echo "... SA.i"
-	@echo "... SA.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

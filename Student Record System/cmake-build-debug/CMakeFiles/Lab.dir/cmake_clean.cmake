@@ -1,6 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Lab.dir/SA.c.o"
-  "CMakeFiles/Lab.dir/SA.c.o.d"
   "CMakeFiles/Lab.dir/main.c.o"
   "CMakeFiles/Lab.dir/main.c.o.d"
   "Lab"

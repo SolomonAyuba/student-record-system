@@ -1,0 +1,192 @@
+    // Created by Solomon Ayuba on 07/07/2024.
+
+    #include <stdio.h>      // C library for input/output functions
+    #include <string.h>     // C library for string handling functions like 'strcpy' and 'strcat'
+
+
+    struct Student {
+    //Struct: is a c data stucture initialized to store groups of datatypes for various Students info.
+
+        /*
+         * Functionality 1 & 2: Initial Setup and Data Storage Phase
+         * In this section Student's information, including name, roll number, and marks are stored using appropriate
+         * data types.
+        */
+
+        // Variable, Data-type declaration
+        char programName[50];   // allocates 50 character memory space for string program name
+        char firstName[15];     // allocates 15 character memory space for student's firstname input
+        char lastName[15];      // allocates 15 character memory space for student's lastname input
+        char userName[30];      // allocates 30 character memory space for both first and lastname
+
+        int rollNumber[4];      // allocates 4 characters for student roll number
+        // Allocates 2 characters for student marks across 8 courses
+        int mark1[2];
+        int mark2[2];
+        int mark3[2];
+        int mark4[2];
+        int mark5[2];
+        int mark6[2];
+        int mark7[2];
+        int mark8[2];
+
+        char course1[30];
+        char course2[30];
+        char course3[30];
+        char course4[30];
+        char course5[50];
+        char course6[30];
+        char course7[30];
+        char course8[30];
+
+        int passMark;
+    };
+
+int main(void) {
+// The main method section where we use the different attributes from the Struct session above
+
+        /*
+         * This section displays a welcome message and prompts the user to enter their full name.
+         * After which the user is greeted by the entered name
+        */
+        struct Student student1;
+
+        strcpy(student1.programName, "Interactive Student Record System v1.0");
+        printf("Hello, Welcome to the %s \n Please enter your name to proceed \n", student1.programName);
+
+        // prompts student for their first name
+        printf("First Name: ");
+        fgets(student1.firstName, 15, stdin);
+        student1.firstName[strcspn(student1.firstName, "\n")] = '\0'; // removes added newline space if present
+
+        // prompts student for their last name
+        printf("Last Name: ");
+        fgets(student1.lastName, 15, stdin);
+        student1.lastName[strcspn(student1.lastName, "\n")] = '\0';  // removes added newline space if present
+
+        // Concatenate's firstName and LastName as userName
+        strcpy(student1.userName, student1.firstName);
+        strcat(student1.userName, " ");
+        strcat(student1.userName, student1.lastName);
+
+        // Greets student printing their concatenated username
+        printf("\n");  // Inserts empty before next code
+        printf("Good day!, %s", student1.userName);
+
+        // prompts student to enter their roll number
+        printf("\n");  // Inserts space before next code
+        printf("\n""Please enter your 4 digit Roll Number: ");
+        scanf("%d", &student1.rollNumber);
+
+        //printf("Roll Number: %d \n", &student1.rollNumber);
+        printf("\n");  // Inserts space before next code
+
+
+        /* Functionality 3: Input and Output Phase
+         * This section takes 8 courses scores from the student and displays their mark
+        */
+        strcpy(student1.course1, "[1] Intro to Data Science: ");
+        printf("What's your score for the following courses (0-100):\n%s", student1.course1);
+        scanf("%d", &student1.mark1);
+
+        strcpy(student1.course2, "[2] Intro to R Programming: ");
+        printf("%s", student1.course2);
+        scanf("%d", &student1.mark2);
+
+        strcpy(student1.course3, "[3] Computer Progamming I: ");
+        printf("%s", student1.course3);
+        scanf("%d", &student1.mark3);
+
+        strcpy(student1.course4, "[4] Descrete Structures: ");
+        printf("%s", student1.course4);
+        scanf("%d", &student1.mark4);
+
+        strcpy(student1.course5, "[5] Intro to Numerical Analysis: ");
+        printf("%s", student1.course5);
+        scanf("%d", &student1.mark5);
+
+        strcpy(student1.course6, "[6] Mathematical Methods I: ");
+        printf("%s", student1.course6);
+        scanf("%d", &student1.mark6);
+
+        strcpy(student1.course7, "[7] Sets, logic & algebra: ");
+        printf("%s", student1.course7);
+        scanf("%d", &student1.mark7);
+
+        strcpy(student1.course8, "[8] Entreprenuership: ");
+        printf("%s", student1.course8);
+        scanf("%d", &student1.mark8);
+
+        printf("\nYOUR RESULTS ARE HERE \n");
+        student1.passMark = 40;
+
+        if(student1.mark1 >= student1.passMark) {
+             printf("you passed: %s\n", student1.course1);
+        } else {
+            printf("Sorry, you failed this course: ");
+        } if(student1.mark2 >= student1.passMark) {
+            printf("you passed: %s\n", student1.course2);
+        } else {
+            printf("Sorry, you failed this course: ");
+        } if(student1.mark3 >= student1.passMark) {
+            printf("you passed: %s\n", student1.course3);
+        } else {
+            printf("Sorry, you failed this course: ");
+        } if(student1.mark4 >= student1.passMark) {
+            printf("you passed: %s\n", student1.course4);
+        } else {
+            printf("Sorry, you failed this course: ");
+        } if(student1.mark5 >= student1.passMark) {
+            printf("you passed: %s\n", student1.course5);
+        } else {
+            printf("Sorry, you failed this course: ");
+        } if(student1.mark6 >= student1.passMark) {
+            printf("you passed: %s\n", student1.course6);
+        } else {
+            printf("Sorry, you failed this course: ");
+        } if(student1.mark7 >= student1.passMark) {
+            printf("you passed: %s\n", student1.course7);
+        } else {
+            printf("Sorry, you failed this course: ");
+        } if(student1.mark8 >= student1.passMark) {
+            printf("you passed: %s\n", student1.course8);
+        } else {
+            printf("Sorry, you failed this course: ");
+        }
+
+
+
+
+        /*
+         * Brainstorming (ignore this portion)
+         * //scanf("%s", firstName,);
+         * printf("Hello, World!\n  ");
+         * printf("my favourite %s is  %d", "Digit");
+         * "%s = string character";
+         * %c = character ;
+         * "%d = integers";
+         * "%f = float, double";
+         * "%lf = float, double when using scan()";
+        */
+        return 0;
+
+
+        /* Corrected Issues
+
+            Roll Number Handling:
+
+            rollNumber should be a single integer, not an array.
+            Use %d correctly with scanf and printf.
+            Mark Handling:
+
+            mark1, mark2, etc., should be single integers, not arrays.
+            Use a loop to simplify the input and output of marks.
+            Input Handling:
+
+            Use fflush(stdin) or other techniques to handle newline characters properly.
+            Output Formatting:
+
+            Improve the output messages for better clarity.
+
+         */
+    }

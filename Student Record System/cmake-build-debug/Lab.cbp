@@ -78,9 +78,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/solomonayuba/Desktop/Student Record System/Student Record System/SA.c">
-			<Option target="Lab"/>
-		</Unit>
 		<Unit filename="/Users/solomonayuba/Desktop/Student Record System/Student Record System/main.c">
 			<Option target="Lab"/>
 		</Unit>
