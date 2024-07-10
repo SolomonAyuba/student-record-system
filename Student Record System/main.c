@@ -218,7 +218,47 @@ void calculateAverageMarks(struct Student* students, int studentCount) {
     }
 }
 
+// This function calculates the total marks a student gets in preparationg for the function that sorts and display the
+// marks in ascending and descending order
+int getTotalMarks(struct Student* student) {
+    int total = 0;
+    for (int i = 0; i < 8; i++) {
+        total += student->marks[i];
+    }
+    return total;
+}
 
+// This function enables sorting the student's marks in ascending order
+int compareAscending(const void* a, const void* b) {
+    struct Student* studentA = (struct Student*)a;
+    struct Student* studentB = (struct Student*)b;
+    return getTotalMarks(studentA) - getTotalMarks(studentB);
+}
+
+// This function enables sorting the student's marks in descending order
+int compareDescending(const void* a, const void* b) {
+    struct Student* studentA = (struct Student*)a;
+    struct Student* studentB = (struct Student*)b;
+    return getTotalMarks(studentB) - getTotalMarks(studentA);
+}
+
+// This functtion allows for sorting and displaying the record of students in chosen order
+void sortAndDisplayStudents(struct Student* students, int studentCount, int order) {
+    if(studentCount == 0) {
+        printf("No students in the record to sort.\n");
+        return;
+    }
+    if(order == 1) {
+        qsort(students, studentCount, sizeof(struct Student), compareAscending);
+        printf("Students sorted by marks in ascending order:\n");
+    } else if (order == 2) {
+        qsort(students, studentCount, sizeof(struct Student), compareDescending);
+        printf("Students sorted by marks in descending order:\n");
+    }
+    for (int i = 0; i < studentCount; i++) {
+        displayStudentResults(&students[i]);
+    }
+}
     // The main method that houses and drives the established data structure, functions, dynamic memory allocation
     // file saving and loading functions
     int main(void){
@@ -244,7 +284,9 @@ void calculateAverageMarks(struct Student* students, int studentCount) {
             printf("\n4. Display all Students");
             printf("\n5. Search for Existing Student by Their Roll Number");
             printf("\n6. Calculate Average Marks of All Students");
-            printf("\n7. Quit\n");
+            printf("\n7. Sort Students by Marks in Ascending Order");
+            printf("\n8. Sort Students by Marks in Descending Order");
+            printf("\n9. Quit\n");
             printf("\nChoose an option: ");
 
             int option;
@@ -282,6 +324,10 @@ void calculateAverageMarks(struct Student* students, int studentCount) {
             } else if(option == 6) {
                 calculateAverageMarks(students, studentCount);
             } else if(option == 7) {
+                sortAndDisplayStudents(students, studentCount, 1);
+            } else if(option == 8) {
+                sortAndDisplayStudents(students, studentCount, 2);
+            } else if(option == 9) {
                 saveToFile(students, studentCount, "StudentRecordSystem.txt");
                 break;
             } else {
