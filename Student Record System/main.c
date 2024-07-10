@@ -284,8 +284,8 @@ void sortAndDisplayStudents(struct Student* students, int studentCount, int orde
             printf("\n4. Display all Students");
             printf("\n5. Search for Existing Student by Their Roll Number");
             printf("\n6. Calculate Average Marks of All Students");
-            printf("\n7. Sort Students by Marks in Ascending Order");
-            printf("\n8. Sort Students by Marks in Descending Order");
+            printf("\n7. Sort Students by Marks (↑ Ascending Order)");
+            printf("\n8. Sort Students by Marks (↓ Descending Order)");
             printf("\n9. Quit\n");
             printf("\nChoose an option: ");
 
