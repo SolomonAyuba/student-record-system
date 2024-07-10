@@ -1,8 +1,8 @@
 #include <stdio.h>  // C library for input/output functions
 #include <string.h> // C library for string handling functions like 'strcpy' and 'strcat'
 #include <stdlib.h>  // C library for Dynamic Memory Allocation. Used in this code to free memory when not in use
-#define STARTING_CAPACITY 10 // C preprocessor directive used to define macros. Used to create a constant of
-                         //  10 students as starting capcity for dynamic memory allocation
+#define MAX_STUDENTS 100 // C preprocessor directive used to define macros.
+                         // Used to create a constant of 100 Maxiumum students in this program
 
 // The Struct function stores groups of various data types for various student. I call it Array on steriods.
 struct Student {
@@ -72,23 +72,6 @@ void inputStudentData(struct Student* student) {
     getchar();  // This function Consumes the leftover \n (newline) character after the student enters their marks
 }
 
-// This Structure function adds students to our record utilizing the realloc() function for dynamic memory allocation
-struct Student* addStudent(struct Student* students, int* studentCount, int* capacity) {
-    if (*studentCount >= *capacity) {
-        *capacity *= 2;
-        students = realloc(students, (*capacity) * sizeof(struct Student));
-        if (students == NULL) {
-            printf("Memory allocation failed.\n");
-            exit(1);
-        }
-    }
-    inputStudentData(&students[*studentCount]);
-    (*studentCount)++;
-    return students;
-}
-
-
-/*
 // This method function section adds students to our record
 void addStudent(struct Student students[], int* studentCount) {
     if (*studentCount >= MAX_STUDENTS) {
@@ -98,7 +81,6 @@ void addStudent(struct Student students[], int* studentCount) {
     inputStudentData(&students[*studentCount]);
     (*studentCount)++;
 }
-*/
 
 // This function section using the roll number removes existing students from our record
 void removeStudent(struct Student students[], int* studentCount, int rollNumber) {
@@ -140,33 +122,27 @@ void modifyStudent(struct Student students[], int studentCount, int rollNumber) 
 
 // This function section displays student result as inputed by the student
 void displayStudentResults(struct Student* student) {
-    printf("\nFull Name: %s \nRoll Number: %d\nSemester Result\n", student->userName, student->rollNumber);
+    printf("\nResults for %s with Roll Number [%d] is here:\n", student->userName, student->rollNumber);
     student->passMark = 40;     // Declaring the pass mark as 40
 
     for (int i = 0; i < 8; i++) {
         if (student->marks[i] >= student->passMark) {
-            printf("  ✅ Hurray! you passed: %s\n", student->courses[i]);
+            printf("Hurray! You passed: %s\n", student->courses[i]);
         } else {
-            printf("  ❌ Sorry, you failed: %s\n", student->courses[i]);
+            printf("Sorry, you failed: %s\n", student->courses[i]);
         }
     }
 }
 
-// The main method that houses and drives the established data structure, functions,and dynamic memory allocation
 int main(void) {
     // The main method section where we use the different ealier declared sturcture and other functions
     /* This section displays a welcome message and prompts the user to enter their full name.
      * After which the user is greeted by the entered name */
+
     char programName[50] = "Interactive Student Record System v1.0";
     printf("Hello, Welcome to the %s\n", programName);
 
-    int capacity = STARTING_CAPACITY;
-    struct Student* students = malloc(capacity * sizeof(struct Student));
-    if (students == NULL) {
-        printf("Memory allocation failed. \n");
-        return 1;
-    }
-
+    struct Student students[MAX_STUDENTS]; // Array to store up to an undefined maximum number of students
     int studentCount = 0;
 
     while (1) {
@@ -182,7 +158,7 @@ int main(void) {
         getchar(); // This function Consumes the leftover \n (newline) character after the student picks an option
 
         if (option == 1) {
-            students == addStudent(students, &studentCount, &capacity);
+            addStudent(students, &studentCount);
         } else if(option == 2) {
             printf("Enter roll number of student to remove: ");
             int rollNumber;
@@ -199,7 +175,7 @@ int main(void) {
             modifyStudent(students, studentCount, rollNumber);
         } else if(option == 4) {
             for(int i = 0; i < studentCount; i++) {
-                printf("\nSTUDENT INFORMATION\nStudent Number: %d", i + 1);
+                printf("\nStudent %d:\n", i + 1);
                 displayStudentResults(&students[i]);
             }
         } else if(option == 5) {
@@ -210,7 +186,7 @@ int main(void) {
     }
 
 
-    printf("\nHurray! you registered %d number of student.\nThank you for using our %s software",
+    printf("\nHurray! You registered %d number of student.\nThank you for using our %s software",
         studentCount, programName);
 
 
