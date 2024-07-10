@@ -119,10 +119,10 @@ void modifyStudent(struct Student students[], int studentCount, int rollNumber) 
     if (index == -1) {
         printf("The Student with the roll number %d doesn't exist on our record.\n", rollNumber);
         return;
+    } else {
+        printf("Modifying student with the roll number %d:\n", rollNumber);
+        inputStudentData(&students[index]);
     }
-    printf("Modifying student with the roll number %d:\n", rollNumber);
-    inputStudentData(&students[index]);
-
 }
 
 // This function displays student result as inputed by the student
@@ -203,7 +203,7 @@ int main(void) {
 
     int studentCount = 0;
 
-    loadFromFile(&students, &studentCount, &capacity, "Student Record System Questions.txt");
+    loadFromFile(&students, &studentCount, &capacity, "StudentRecordSystem.txt");
 
     while (1) {
         printf("\nWould you like to:");
@@ -240,7 +240,7 @@ int main(void) {
                 displayStudentResults(&students[i]);
             }
         } else if(option == 5) {
-            saveToFile(students, studentCount, "/Users/solomonayuba/Desktop/Student Record System/Student Record System");
+            saveToFile(students, studentCount, "StudentRecordSystem.txt");
             break;
         } else {
             printf("Invalid option. Please try again.\n");
