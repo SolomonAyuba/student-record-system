@@ -282,8 +282,8 @@ void sortAndDisplayStudents(struct Student* students, int studentCount, int orde
             printf("\n2. Remove Existing Student");
             printf("\n3. Modify Existing Student Record");
             printf("\n4. Display all Students");
-            printf("\n5. Search for Existing Student by Their Roll Number");
-            printf("\n6. Calculate Average Marks of All Students");
+            printf("\n5. Search for Existing Student by their Roll Number");
+            printf("\n6. Calculate Average Marks of all Students");
             printf("\n7. Sort Students by Marks (↑ Ascending Order)");
             printf("\n8. Sort Students by Marks (↓ Descending Order)");
             printf("\n9. Quit\n");
