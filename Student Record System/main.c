@@ -200,78 +200,101 @@ void searchStudent (struct Student* students, int studentCount, int rollNumber) 
     printf("Oop! The Roll Number %d isn't assigned to a student yet. Try again!\n", rollNumber);
 }
 
-// The main method that houses and drives the established data structure, functions, dynamic memory allocation
-// file saving and loading functions
-int main(void) {
-    char programName[50] = "Interactive Student Record System v1.0";
-    printf("Hello, Welcome to the %s\n", programName);
-
-    int capacity = STARTING_CAPACITY;
-    struct Student* students = malloc(capacity * sizeof(struct Student));
-    if (students == NULL) {
-        printf("Oop! Memory allocation failed. \n");
-        return 1;
+// This function calculates and displays the average marks for all students
+void calculateAverageMarks(struct Student* students, int studentCount) {
+    if (studentCount == 0) {
+        printf("You need to provide atleast 2 students to calculate their average marks.\n");
+        return;
     }
-
-    int studentCount = 0;
-
-    loadFromFile(&students, &studentCount, &capacity, "StudentRecordSystem.txt");
-
-    while (1) {
-        printf("\nWould you like to:");
-        printf("\n1. Add a New Student");
-        printf("\n2. Remove Existing Student");
-        printf("\n3. Modify Existing Student Record");
-        printf("\n4. Display all Students");
-        printf("\n5. Search for Existing Student by Their Roll Number");
-        printf("\n6. Quit\n");
-        printf("\nChoose an option: ");
-
-        int option;
-        scanf("%d", &option);
-        getchar(); // This function Consumes the leftover \n (newline) character after the student picks an option
-
-        if (option == 1) {
-            students = addStudent(students, &studentCount, &capacity);
-        } else if(option == 2) {
-            printf("Enter roll number of student to remove: ");
-            int rollNumber;
-            scanf("%d", &rollNumber);
-            // This function Consumes the leftover \n (newline) character after the student enters their rollNumber
-            getchar();
-            removeStudent(students, &studentCount, rollNumber);
-        } else if(option == 3) {
-            printf("Enter roll number of student to modify: ");
-            int rollNumber;
-            scanf("%d", &rollNumber);
-            // This function Consumes the leftover \n (newline) character after the student enters the rollNumber
-            getchar();
-            modifyStudent(students, studentCount, rollNumber);
-        } else if(option == 4) {
-            for(int i = 0; i < studentCount; i++) {
-                printf("\nSTUDENT INFORMATION\n   Student Number: %d", i + 1);
-                displayStudentResults(&students[i]);
-            }
-        } else if(option == 5){
-            printf("\nWhat's the student's Roll Number: ");
-            int rollNumber;
-            scanf("%d", &rollNumber);
-            // This function Consumes the leftover \n (newline) character after the student enters the rollNumber
-            getchar();
-            searchStudent(students, studentCount, rollNumber);
-        } else if(option == 6) {
-            saveToFile(students, studentCount, "StudentRecordSystem.txt");
-            break;
-        } else {
-            printf("Opp! Invalid option. Please try again.\n");
+    int totalMarks[8] = {0};
+    for (int i = 0; i < studentCount; i++) {
+        for (int j = 0; j < 8; j++) {
+            totalMarks[j] += students[i].marks[j];
         }
     }
+    printf("\nAverage Marks for each course:\n");
+    for (int j = 0; j < 8; j++) {
+        printf("  %s: %.2f\n", students[0].courses[j], (float)totalMarks[j] / studentCount);
+    }
+}
 
-    free(students);
 
-    printf("\nHurray! you registered %d number of student.\nThank you for using our %s software",
-        studentCount, programName);
+    // The main method that houses and drives the established data structure, functions, dynamic memory allocation
+    // file saving and loading functions
+    int main(void){
+        char programName[50] = "Interactive Student Record System v1.0";
+        printf("Hello, Welcome to the %s\n", programName);
+
+        int capacity = STARTING_CAPACITY;
+        struct Student* students = malloc(capacity * sizeof(struct Student));
+        if (students == NULL) {
+            printf("Oop! Memory allocation failed. \n");
+            return 1;
+        }
+
+        int studentCount = 0;
+
+        loadFromFile(&students, &studentCount, &capacity, "StudentRecordSystem.txt");
+
+        while (1) {
+            printf("\nWould you like to:");
+            printf("\n1. Add a New Student");
+            printf("\n2. Remove Existing Student");
+            printf("\n3. Modify Existing Student Record");
+            printf("\n4. Display all Students");
+            printf("\n5. Search for Existing Student by Their Roll Number");
+            printf("\n6. Calculate Average Marks of All Students");
+            printf("\n7. Quit\n");
+            printf("\nChoose an option: ");
+
+            int option;
+            scanf("%d", &option);
+            getchar(); // This function Consumes the leftover \n (newline) character after the student picks an option
+
+            if (option == 1) {
+                students = addStudent(students, &studentCount, &capacity);
+            } else if(option == 2) {
+                printf("Enter roll number of student to remove: ");
+                int rollNumber;
+                scanf("%d", &rollNumber);
+                // This function Consumes the leftover \n (newline) character after the student enters their rollNumber
+                getchar();
+                removeStudent(students, &studentCount, rollNumber);
+            } else if(option == 3) {
+                printf("Enter roll number of student to modify: ");
+                int rollNumber;
+                scanf("%d", &rollNumber);
+                // This function Consumes the leftover \n (newline) character after the student enters the rollNumber
+                getchar();
+                modifyStudent(students, studentCount, rollNumber);
+            } else if(option == 4) {
+                for(int i = 0; i < studentCount; i++) {
+                    printf("\nSTUDENT INFORMATION\n   Student Number: %d", i + 1);
+                    displayStudentResults(&students[i]);
+                }
+            } else if(option == 5){
+                printf("\nWhat's the student's Roll Number: ");
+                int rollNumber;
+                scanf("%d", &rollNumber);
+                // This function Consumes the leftover \n (newline) character after the student enters the rollNumber
+                getchar();
+                searchStudent(students, studentCount, rollNumber);
+            } else if(option == 6) {
+                calculateAverageMarks(students, studentCount);
+            } else if(option == 7) {
+                saveToFile(students, studentCount, "StudentRecordSystem.txt");
+                break;
+            } else {
+                printf("Opp! Invalid option. Please try again.\n");
+            }
+        }
+
+        free(students); // Dynamic memory allocation function to free memory when no longer needed.
+
+        printf("\nHurray! you registered %d number of student.\nThank you for using our %s software",
+            studentCount, programName);
 
 
-    return 0;
+        return 0;
+
 }
