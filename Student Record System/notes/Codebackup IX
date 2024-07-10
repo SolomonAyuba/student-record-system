@@ -1,31 +1,27 @@
-#include <ctype.h>
 #include <stdio.h>      // C library for input/output functions
 #include <string.h>     // C library for string handling functions like 'strcpy' and 'strcat'
 #include <stdlib.h>     // C library for Dynamic Memory Allocation. Used in this code to free memory when not in use
-/* C preprocessor directive used to define macros. Used to create a constant of 10 students as starting capcity for
- * dynamic memory allocation
- */
-#define STARTING_CAPACITY 10
+#define STARTING_CAPACITY 10   // C preprocessor directive used to define macros. Used to create a constant of
+                              //  10 students as starting capcity for dynamic memory allocation
 
-    /* The Struct function stores groups of various data types for various student. I call it Array on steriods.
-     * Struct: is a C data structure initialized to store groups of data types for various students info.
-     * We declare various variable and data-type as needed in the program.
-     */
+// The Struct function stores groups of various data types for various student. I call it Array on steriods.
 struct Student {
+    // Struct: is a C data structure initialized to store groups of data types for various students info.
+
+    // Variable, Data-type declaration
     char firstName[15];     // allocates 15 character memory space for student's first name input
     char lastName[15];      // allocates 15 character memory space for student's last name input
     char userName[30];      // allocates 30 character memory space for both first and last name
-    int rollNumber;         // integer for storing Students Roll Number
-    int marks[8];           // array for storing Marks for 8 Courses
-    char courses[8][50];    // array for storing names of 8 Courses, allocating 50 character memory space for each
-    int passMark;           // integer for storing Pass Mark
+
+    int rollNumber;         // single integer for student roll number
+    int marks[8];           // array for storing marks for 8 courses
+
+    char courses[8][50];    // array for storing names of 8 courses, allocating 50 character mem space for each
+    int passMark;
 };
 
-    /*
-     * This function assigns character strings to the courses variable declared in the Struct above.
-     * We define the title of the 8 courses as intended for this program
-     */
-void labelCourses(char courses[8][50]) {
+// This function assigns the strings of character to the courses variable declared in the Struct above
+void initializeCourses(char courses[8][50]) {
     strcpy(courses[0], "Intro to Data Science");
     strcpy(courses[1], "Intro to R Programming");
     strcpy(courses[2], "Computer Programming I");
@@ -36,45 +32,39 @@ void labelCourses(char courses[8][50]) {
     strcpy(courses[7], "Entrepreneurship");
 }
 
-    /* This function employs the use of a pointer and prompts the Student to enter Firstname, Lastname, Roll Number and
-     * Marks for the 8 courses.
-     * We concatenate the inputed First and Lastname then assigns the values to the variable Username
-     * The student is then welcomed and greeted by their Username
-     * We prompt the user to enter a 4-digit roll Number which is validated before proceeding
-     * We display the 8 courses and prompt the user to enter value for each using a for loop
-    */
+// This function handles the requested input prompt provided by the student
 void inputStudentData(struct Student* student) {
-
+    // Prompt student for their first name
     printf("First Name: ");
     fgets(student->firstName, 15, stdin);
     student->firstName[strcspn(student->firstName, "\n")] = '\0'; // removes added newline space if present
 
+    // Prompt student for their last name
     printf("Last Name: ");
     fgets(student->lastName, 15, stdin);
     student->lastName[strcspn(student->lastName, "\n")] = '\0';  // removes added newline space if present
 
+    // Concatenate firstName and lastName as userName
     strcpy(student->userName, student->firstName);
     strcat(student->userName, " ");
     strcat(student->userName, student->lastName);
 
-    printf("\nGood day, %s!\n", student->userName);
+    // Greet student printing their concatenated username
+    printf("\n");  // Inserts empty line before next code
+    printf("Good day, %s!\n", student->userName);
 
-    while (1) {
-        printf("Please enter your 4-digit Roll Number: ");
-        scanf("%d", &student->rollNumber);
-        getchar(); // this function consumes leftover \n (newline) character after the roll number is entered
+    // Prompt student to enter their roll number
+    printf("\nPlease enter your 4-digit Roll Number: ");
+    scanf("%d", &student->rollNumber);
+    // This function Consumes the leftover \n (newline) character after the student enters the roll number.
+    getchar();
 
-        if(student->rollNumber >= 1000 && student->rollNumber <= 9999) {
-            break;
-        } else {
-            printf("\nOops! Invalid Roll Number. Please enter a valid 4-digit Number.\n");
-        }
-    }
-
-    labelCourses(student->courses);
+    // Initialize courses
+    initializeCourses(student->courses);
 
     printf("\nWhat's your score for the following 8 courses (0-100):\n");
 
+    // Prompts student to input scores for each 8 courses
     for (int i = 0; i < 8; i++) {
         printf("[%d] %s: ", i + 1, student->courses[i]);
         scanf("%d", &student->marks[i]);
@@ -192,7 +182,7 @@ void loadFromFile(struct Student** students, int* studentCount, int* capacity, c
         strcpy(student->userName, student->firstName);
         strcat(student->userName, " ");
         strcat(student->userName, student->lastName);
-        labelCourses(student->courses);
+        initializeCourses(student->courses);
         (*studentCount)++;
     }
     fclose(file);
