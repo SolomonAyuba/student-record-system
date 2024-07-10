@@ -250,10 +250,10 @@ void sortAndDisplayStudents(struct Student* students, int studentCount, int orde
     }
     if(order == 1) {
         qsort(students, studentCount, sizeof(struct Student), compareAscending);
-        printf("Students sorted by marks in ascending order:\n");
+        printf("\nSTUDENTS SORTED BY MARKS in ↑ ascending order:");
     } else if (order == 2) {
         qsort(students, studentCount, sizeof(struct Student), compareDescending);
-        printf("Students sorted by marks in descending order:\n");
+        printf("\nSTUDENTS SORTED BY MARKS in ↓ DESCENDING ORDER:");
     }
     for (int i = 0; i < studentCount; i++) {
         displayStudentResults(&students[i]);
