@@ -240,7 +240,7 @@ int main(void) {
                 displayStudentResults(&students[i]);
             }
         } else if(option == 5) {
-            saveToFile(students, studentCount, "Student Record System Questions.txt");
+            saveToFile(students, studentCount, "/Users/solomonayuba/Desktop/Student Record System/Student Record System");
             break;
         } else {
             printf("Invalid option. Please try again.\n");
