@@ -87,6 +87,19 @@ struct Student* addStudent(struct Student* students, int* studentCount, int* cap
     return students;
 }
 
+
+/*
+// This method function section adds students to our record
+void addStudent(struct Student students[], int* studentCount) {
+    if (*studentCount >= MAX_STUDENTS) {
+        printf("Maximum number of students reached.\n");
+        return;
+    }
+    inputStudentData(&students[*studentCount]);
+    (*studentCount)++;
+}
+*/
+
 // This function section using the roll number removes existing students from our record
 void removeStudent(struct Student students[], int* studentCount, int rollNumber) {
     int index = -1;
@@ -141,7 +154,9 @@ void displayStudentResults(struct Student* student) {
 
 // The main method that houses and drives the established data structure, functions,and dynamic memory allocation
 int main(void) {
-
+    // The main method section where we use the different ealier declared sturcture and other functions
+    /* This section displays a welcome message and prompts the user to enter their full name.
+     * After which the user is greeted by the entered name */
     char programName[50] = "Interactive Student Record System v1.0";
     printf("Hello, Welcome to the %s\n", programName);
 
