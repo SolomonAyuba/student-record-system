@@ -1,8 +1,11 @@
 #include <stdio.h>      // C library for input/output functions
 #include <string.h>     // C library for string handling functions like 'strcpy' and 'strcat'
+#define MAX_STUDENTS 100 // C preprocessor directive used to define macros.
+                         // Used to create a constant of 100 Maxiumum students in this program
 
+// The Struct function stores groups of various data types for various student. I call it Array on steriods.
 struct Student {
-    // Struct: is a C data structure initialized to store groups of data types for various students' info.
+    // Struct: is a C data structure initialized to store groups of data types for various students info.
 
     // Variable, Data-type declaration
     char firstName[15];     // allocates 15 character memory space for student's first name input
@@ -16,6 +19,7 @@ struct Student {
     int passMark;
 };
 
+// This function assigns the strings of character to the courses variable declared in the Struct above
 void initializeCourses(char courses[8][50]) {
     strcpy(courses[0], "Intro to Data Science");
     strcpy(courses[1], "Intro to R Programming");
@@ -27,6 +31,7 @@ void initializeCourses(char courses[8][50]) {
     strcpy(courses[7], "Entrepreneurship");
 }
 
+// This function handles the requested input prompt provided by the student
 void inputStudentData(struct Student* student) {
     // Prompt student for their first name
     printf("First Name: ");
@@ -50,7 +55,7 @@ void inputStudentData(struct Student* student) {
     // Prompt student to enter their roll number
     printf("\nPlease enter your 4-digit Roll Number: ");
     scanf("%d", &student->rollNumber);
-    // Consume leftover newline character
+    // This function Consumes the leftover \n (newline) character after the student enters the roll number.
     getchar();
 
     // Initialize courses
@@ -63,14 +68,62 @@ void inputStudentData(struct Student* student) {
         printf("[%d] %s: ", i + 1, student->courses[i]);
         scanf("%d", &student->marks[i]);
     }
-    getchar();  // Consume leftover newline character
+    getchar();  // This function Consumes the leftover \n (newline) character after the student enters their marks
 }
 
+// This method function section adds students to our record
+void addStudent(struct Student students[], int* studentCount) {
+    if (*studentCount >= MAX_STUDENTS) {
+        printf("Maximum number of students reached.\n");
+        return;
+    }
+    inputStudentData(&students[*studentCount]);
+    (*studentCount)++;
+}
+
+// This function section using the roll number removes existing students from our record
+void removeStudent(struct Student students[], int* studentCount, int rollNumber) {
+    int index = -1;
+    for (int i = 0; i < *studentCount; i++) {
+        if (students[i].rollNumber == rollNumber) {
+            index = i;
+            break;
+        }
+    }
+    if (index == -1) {
+        printf("The Student with the roll number %d doesn't exist on our record.\n", rollNumber);
+        return;
+    }
+    for (int i = index; i < *studentCount - 1; i++) {
+        students[i] = students[i+1];
+    }
+    (*studentCount)--;
+    printf("The Student with the roll number %d has successfully been removed.\n", rollNumber);
+}
+
+// This function section using the roll number modifies existing student's information
+void modifyStudent(struct Student students[], int studentCount, int rollNumber) {
+    int index = -1;
+    for (int i = 0; i < studentCount; i++) {
+        if (students[i].rollNumber == rollNumber) {
+            index = 1;
+            break;
+        }
+    }
+    if (index == -1) {
+        printf("The Student with the roll number %d doesn't exist on our record.\n", rollNumber);
+        return;
+    }
+    printf("Modifying student with the roll number %d:\n", rollNumber);
+    inputStudentData(&students[index]);
+
+}
+
+// This function section displays student result as inputed by the student
 void displayStudentResults(struct Student* student) {
     printf("\nResults for %s with Roll Number [%d] is here:\n", student->userName, student->rollNumber);
     student->passMark = 40;     // Declaring the pass mark as 40
 
-    // Displays the results of the courses
     for (int i = 0; i < 8; i++) {
         if (student->marks[i] >= student->passMark) {
             printf("Hurray! You passed: %s\n", student->courses[i]);
@@ -81,35 +134,59 @@ void displayStudentResults(struct Student* student) {
 }
 
 int main(void) {
-    // The main method section where we use the different attributes from the Struct session above
+    // The main method section where we use the different ealier declared sturcture and other functions
     /* This section displays a welcome message and prompts the user to enter their full name.
      * After which the user is greeted by the entered name */
 
     char programName[50] = "Interactive Student Record System v1.0";
     printf("Hello, Welcome to the %s\n", programName);
 
-
-    struct Student students[100]; // Array to store up to 100 students
+    struct Student students[MAX_STUDENTS]; // Array to store up to an undefined maximum number of students
     int studentCount = 0;
 
     while (1) {
-        printf("\nEnter information for student %d:\n", studentCount + 1);
-        inputStudentData(&students[studentCount]);
-        displayStudentResults(&students[studentCount]);
+        printf("\nWould you like to:");
+        printf("\n1. Add a New Student");
+        printf("\n2. Remove Existing Student");
+        printf("\n3. Modify Existing Student Information");
+        printf("\n4. Display All Students");
+        printf("\n5. Quit\n");
+        printf("\nChoose an option: ");
+        int option;
+        scanf("%d", &option);
+        getchar(); // This function Consumes the leftover \n (newline) character after the student picks an option
 
-        studentCount++;
-
-        printf("\nEnter 'q' to quit or any other key to continue: ");
-        char choice = getchar();
-        getchar();  // Consume leftover newline character
-        if (choice == 'q' || choice == 'Q') {
+        if (option == 1) {
+            addStudent(students, &studentCount);
+        } else if(option == 2) {
+            printf("Enter roll number of student to remove: ");
+            int rollNumber;
+            scanf("%d", &rollNumber);
+            // This function Consumes the leftover \n (newline) character after the student enters their rollNumber
+            getchar();
+            removeStudent(students, &studentCount, rollNumber);
+        } else if(option == 3) {
+            printf("Enter roll number of student to modify: ");
+            int rollNumber;
+            scanf("%d", &rollNumber);
+            // This function Consumes the leftover \n (newline) character after the student enters the rollNumber
+            getchar();
+            modifyStudent(students, studentCount, rollNumber);
+        } else if(option == 4) {
+            for(int i = 0; i < studentCount; i++) {
+                printf("\nStudent %d:\n", i + 1);
+                displayStudentResults(&students[i]);
+            }
+        } else if(option == 5) {
             break;
+        } else {
+            printf("Invalid option. Please try again.\n");
         }
     }
 
-    printf("\nYou entered data for %d students.\n", studentCount);
 
-    // we attempt question 4b and the rest from here onwardsddssss
+    printf("\nHurray! You registered %d number of student.\nThank you for using our %s software",
+        studentCount, programName);
 
 
     return 0;
