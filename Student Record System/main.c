@@ -259,8 +259,8 @@ void sortAndDisplayStudents(struct Student* students, int studentCount, int orde
         displayStudentResults(&students[i]);
     }
 }
-    // The main method that houses and drives the established data structure, functions, dynamic memory allocation
-    // file saving and loading functions
+    /* The main method that houses and drives the established data structure, functions, dynamic memory allocation
+     * file saving and loading functions */
     int main(void){
         char programName[50] = "Interactive Student Record System v1.0";
         printf("Hello, Welcome to the %s\n", programName);
@@ -337,12 +337,18 @@ void sortAndDisplayStudents(struct Student* students, int studentCount, int orde
 
         free(students); // Dynamic memory allocation function to free memory when no longer needed.
 
-        printf("\nHurray! you registered %d number of student.\nThank you for using our %s software",
+        printf("\nHurray! you registered %d number of student.\nThank you for using our %s Software\n\n"
+               "Data Science Department \nComputer Programming 1 (Group 6)"
+               "\n© Solomon Ayuba | Okong Olugbenga Enang | Abel Odiri Odemudia | Christiana Chatt Richards | Olufemi Adesope9"
+               "",
             studentCount, programName);
 
 
+        /* I CAN'T GET THE FILE READ AND WRITE FUNCTION TO WORK. KINDLY REVERT IF IT'S THE SAME CASE ON YOUR PC.
+         * All Question through 8 has been solved in this code but for question 6 (file operation)
+         *
+         */
 
-        // I CAN'T GET THE FILE READ AND WRITE FUNCTION TO WORK. KINDLY REVERT IF IT'S THE SAME CASE ON YOUR PC.
 
         return 0;
 
