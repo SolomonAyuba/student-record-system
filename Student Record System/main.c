@@ -188,6 +188,18 @@ void loadFromFile(struct Student** students, int* studentCount, int* capacity, c
     fclose(file);
 }
 
+// This function allows the user to search for a student information using the roll number
+void searchStudent (struct Student* students, int studentCount, int rollNumber) {
+    for(int i = 0; i < studentCount; i++) {
+        if (students[i].rollNumber == rollNumber) {
+            printf("\nWe found this student, isn't that nice! \n\nSTUDENT'S INFORMATION");
+            displayStudentResults(&students[i]);
+            return;
+        }
+    }
+    printf("Oop! The Roll Number %d isn't assigned to a student yet. Try again!\n", rollNumber);
+}
+
 // The main method that houses and drives the established data structure, functions, dynamic memory allocation
 // file saving and loading functions
 int main(void) {
@@ -197,7 +209,7 @@ int main(void) {
     int capacity = STARTING_CAPACITY;
     struct Student* students = malloc(capacity * sizeof(struct Student));
     if (students == NULL) {
-        printf("Memory allocation failed. \n");
+        printf("Oop! Memory allocation failed. \n");
         return 1;
     }
 
@@ -211,7 +223,8 @@ int main(void) {
         printf("\n2. Remove Existing Student");
         printf("\n3. Modify Existing Student Record");
         printf("\n4. Display all Students");
-        printf("\n5. Quit\n");
+        printf("\n5. Search for Existing Student by Their Roll Number");
+        printf("\n6. Quit\n");
         printf("\nChoose an option: ");
 
         int option;
@@ -239,11 +252,18 @@ int main(void) {
                 printf("\nSTUDENT INFORMATION\n   Student Number: %d", i + 1);
                 displayStudentResults(&students[i]);
             }
-        } else if(option == 5) {
+        } else if(option == 5){
+            printf("\nWhat's the student's Roll Number: ");
+            int rollNumber;
+            scanf("%d", &rollNumber);
+            // This function Consumes the leftover \n (newline) character after the student enters the rollNumber
+            getchar();
+            searchStudent(students, studentCount, rollNumber);
+        } else if(option == 6) {
             saveToFile(students, studentCount, "StudentRecordSystem.txt");
             break;
         } else {
-            printf("Invalid option. Please try again.\n");
+            printf("Opp! Invalid option. Please try again.\n");
         }
     }
 
