@@ -360,7 +360,7 @@ void sortAndDisplayStudents(struct Student* students, int studentCount, int orde
 
 
         /* I CAN'T GET THE FILE READ AND WRITE FUNCTION TO WORK. KINDLY REVERT IF IT'S THE SAME CASE ON YOUR PC.
-         * All Question through 8 has been solved in this code but for question 6 (file operation)
+         * All Question through 8 has been solved in this code but i can't get question 6 (file operation) to save
          */
 
         return 0;
