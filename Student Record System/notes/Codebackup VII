@@ -212,7 +212,7 @@ void calculateAverageMarks(struct Student* students, int studentCount) {
             totalMarks[j] += students[i].marks[j];
         }
     }
-    printf("\nAVERAGE MAKRS OF ALL STUDENT FOR EACH COURSE:\n");
+    printf("\nAverage Marks for each course:\n");
     for (int j = 0; j < 8; j++) {
         printf("  %s: %.2f\n", students[0].courses[j], (float)totalMarks[j] / studentCount);
     }
@@ -250,7 +250,7 @@ void sortAndDisplayStudents(struct Student* students, int studentCount, int orde
     }
     if(order == 1) {
         qsort(students, studentCount, sizeof(struct Student), compareAscending);
-        printf("\nSTUDENTS SORTED BY MARKS in ↑ ASCENDING ORDER:");
+        printf("\nSTUDENTS SORTED BY MARKS in ↑ ascending order:");
     } else if (order == 2) {
         qsort(students, studentCount, sizeof(struct Student), compareDescending);
         printf("\nSTUDENTS SORTED BY MARKS in ↓ DESCENDING ORDER:");
@@ -259,16 +259,12 @@ void sortAndDisplayStudents(struct Student* students, int studentCount, int orde
         displayStudentResults(&students[i]);
     }
 }
-
     /* The main method that houses and drives the established data structure, functions, dynamic memory allocation
-     * file saving and loading functions, record search, and calculaton and sorting functions
-     */
+     * file saving and loading functions */
     int main(void){
         char programName[50] = "Interactive Student Record System v1.0";
         printf("Hello, Welcome to the %s\n", programName);
 
-        // Using the malloc function from the #define preprocessor directive
-        // this section effects dynamic memory allocation as new students are added
         int capacity = STARTING_CAPACITY;
         struct Student* students = malloc(capacity * sizeof(struct Student));
         if (students == NULL) {
@@ -278,10 +274,8 @@ void sortAndDisplayStudents(struct Student* students, int studentCount, int orde
 
         int studentCount = 0;
 
-        // The function to read the saved records from the file indicated
         loadFromFile(&students, &studentCount, &capacity, "StudentRecordSystem.txt");
 
-        // This loop section executes the established functions based on the choice of the user
         while (1) {
             printf("\nWould you like to:");
             printf("\n1. Add a New Student");
@@ -344,14 +338,17 @@ void sortAndDisplayStudents(struct Student* students, int studentCount, int orde
         free(students); // Dynamic memory allocation function to free memory when no longer needed.
 
         printf("\nHurray! you registered %d number of student.\nThank you for using our %s Software\n\n"
-               "Data Science Department \nComputer Programming I (Group 6)"
-               "\n© Solomon Ayuba | Okong Olugbenga Enang | Abel Odiri Odemudia | Christiana Chatt Richards "
-               "| Olufemi Adesope", studentCount, programName);
+               "Data Science Department \nComputer Programming 1 (Group 6)"
+               "\n© Solomon Ayuba | Okong Olugbenga Enang | Abel Odiri Odemudia | Christiana Chatt Richards | Olufemi Adesope9"
+               "",
+            studentCount, programName);
 
 
         /* I CAN'T GET THE FILE READ AND WRITE FUNCTION TO WORK. KINDLY REVERT IF IT'S THE SAME CASE ON YOUR PC.
          * All Question through 8 has been solved in this code but for question 6 (file operation)
+         *
          */
+
 
         return 0;
 
