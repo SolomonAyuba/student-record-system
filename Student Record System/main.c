@@ -127,7 +127,7 @@ void modifyStudent(struct Student students[], int studentCount, int rollNumber) 
 
 // This function section displays student result as inputed by the student
 void displayStudentResults(struct Student* student) {
-    printf("\nFull Name: %s \nRoll Number: %d\nSemester Result\n", student->userName, student->rollNumber);
+    printf("\n   Fullname: %s \n   Roll Number: %d\nSEMESTER RESULT\n", student->userName, student->rollNumber);
     student->passMark = 40;     // Declaring the pass mark as 40
 
     for (int i = 0; i < 8; i++) {
@@ -184,7 +184,7 @@ int main(void) {
             modifyStudent(students, studentCount, rollNumber);
         } else if(option == 4) {
             for(int i = 0; i < studentCount; i++) {
-                printf("\nSTUDENT INFORMATION\nStudent Number: %d", i + 1);
+                printf("\nSTUDENT INFORMATION\n   Student Number: %d", i + 1);
                 displayStudentResults(&students[i]);
             }
         } else if(option == 5) {
