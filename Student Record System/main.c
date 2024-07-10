@@ -343,10 +343,10 @@ void sortAndDisplayStudents(struct Student* students, int studentCount, int orde
 
         free(students); // Dynamic memory allocation function to free memory when no longer needed.
 
-        printf("\nHurray! you registered %d number of student.\nThank you for using our %s Software\n\n"
-               "Data Science Department \nComputer Programming I (Group 6)"
+        printf("\nHurray! you registered '%d' number of student.\n\nThank you for using our %s Software\n"
                "\n© Solomon Ayuba | Okong Olugbenga Enang | Abel Odiri Odemudia | Christiana Chatt Richards "
-               "| Olufemi Adesope", studentCount, programName);
+               "| Olufemi Adesope"
+               "\nData Science Department \nComputer Programming I (Group 6)", studentCount, programName);
 
 
         /* I CAN'T GET THE FILE READ AND WRITE FUNCTION TO WORK. KINDLY REVERT IF IT'S THE SAME CASE ON YOUR PC.
