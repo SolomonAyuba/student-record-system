@@ -1,4 +1,4 @@
-**NB:** This project was initiated using IntelliJ IDEA CLion IDE. An open-source IDE of JetBrains (https://www.jetbrains.com/clion/).
+This project was initiated using CLion IDE. An open-source IDE of JetBrains (https://www.jetbrains.com/clion/).
 
 **Project Title: Student Record System**.
 
