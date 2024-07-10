@@ -242,7 +242,7 @@ int compareDescending(const void* a, const void* b) {
     return getTotalMarks(studentB) - getTotalMarks(studentA);
 }
 
-// This functtion allows for sorting and displaying the record of students in chosen order
+// This function allows for sorting and displaying the record of students in chosen order
 void sortAndDisplayStudents(struct Student* students, int studentCount, int order) {
     if(studentCount == 0) {
         printf("No students in the record to sort.\n");
@@ -340,6 +340,9 @@ void sortAndDisplayStudents(struct Student* students, int studentCount, int orde
         printf("\nHurray! you registered %d number of student.\nThank you for using our %s software",
             studentCount, programName);
 
+
+
+        // I CAN'T GET THE FILE READ AND WRITE FUNCTION TO WORK. KINDLY REVERT IF IT'S THE SAME CASE ON YOUR PC.
 
         return 0;
 
