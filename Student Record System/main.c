@@ -11,7 +11,7 @@
      * Struct: is a C data structure initialized to store groups of data types for various students info.
      * We declare various variable and data-type as needed in the program.
      */
-struct Student {
+typedef struct {
     char firstName[15];     // allocates 15 character memory space for student's first name input
     char lastName[15];      // allocates 15 character memory space for student's last name input
     char userName[30];      // allocates 30 character memory space for both first and last name
@@ -19,7 +19,7 @@ struct Student {
     int marks[8];           // array for storing Marks for 8 Courses
     char courses[8][50];    // array for storing names of 8 Courses, allocating 50 character memory space for each
     int passMark;           // integer for storing Pass Mark
-};
+} Student;
 
     /*
      * This function assigns character strings to the courses variable declared in the Struct above.
@@ -43,7 +43,7 @@ void labelCourses(char courses[8][50]) {
      * We prompt the user to enter a 4-digit roll Number which is validated before proceeding
      * We display the 8 courses and prompt the user to enter value for each using a for loop
     */
-void inputStudentData(struct Student* student) {
+void inputStudentData(Student *student) {
 
     printf("First Name: ");
     fgets(student->firstName, 15, stdin);
@@ -59,6 +59,7 @@ void inputStudentData(struct Student* student) {
 
     printf("\nGood day, %s!\n", student->userName);
 
+    // Ask's user for 4digit roll number and validates the number.
     while (1) {
         printf("Please enter your 4-digit Roll Number: ");
         scanf("%d", &student->rollNumber);
@@ -71,8 +72,9 @@ void inputStudentData(struct Student* student) {
         }
     }
 
-    labelCourses(student->courses);
+    labelCourses(student->courses); // displays courses while executing next line
 
+    // Prompts user for the mark of the 8 courses
     printf("\nWhat's your score for the following 8 courses (0-100):\n");
 
     for (int i = 0; i < 8; i++) {
@@ -83,10 +85,10 @@ void inputStudentData(struct Student* student) {
 }
 
 // This Structure function adds students to our record utilizing the realloc() function for dynamic memory allocation
-struct Student* addStudent(struct Student* students, int* studentCount, int* capacity) {
+Student *addStudent(Student *students, int *studentCount, int *capacity) {
     if (*studentCount >= *capacity) {
         *capacity *= 2;
-        students = realloc(students, (*capacity) * sizeof(struct Student));
+        students = realloc(students, (*capacity) * sizeof(Student));
         if (students == NULL) {
             printf("Memory allocation failed.\n");
             exit(1);
@@ -98,7 +100,7 @@ struct Student* addStudent(struct Student* students, int* studentCount, int* cap
 }
 
 // This function using the roll number removes existing students from our record
-void removeStudent(struct Student students[], int* studentCount, int rollNumber) {
+void removeStudent(Student students[], int *studentCount, int rollNumber) {
     int index = -1;
     for (int i = 0; i < *studentCount; i++) {
         if (students[i].rollNumber == rollNumber) {
@@ -118,7 +120,7 @@ void removeStudent(struct Student students[], int* studentCount, int rollNumber)
 }
 
 // This function using the roll number modifies existing student's information
-void modifyStudent(struct Student students[], int studentCount, int rollNumber) {
+void modifyStudent(Student students[], int studentCount, int rollNumber) {
     int index = -1;
     for (int i = 0; i < studentCount; i++) {
         if (students[i].rollNumber == rollNumber) {
@@ -136,7 +138,7 @@ void modifyStudent(struct Student students[], int studentCount, int rollNumber) 
 }
 
 // This function displays student result as inputed by the student
-void displayStudentResults(struct Student* student) {
+void displayStudentResults(Student *student) {
     printf("\n   Fullname: %s \n   Roll Number: %d\nSEMESTER RESULT\n", student->userName, student->rollNumber);
     student->passMark = 40;     // Declaring the pass mark as 40
 
@@ -150,7 +152,7 @@ void displayStudentResults(struct Student* student) {
 }
 
 // This function saves the students full name, roll number, and marks in a .txt file.
-void saveToFile(struct Student* students, int studentCount, const char* filename) {
+void saveToFile(Student *students, int studentCount, const char* filename) {
     FILE* file = fopen(filename, "w");
     if(file == NULL) {
         printf("Could not open file for writing.\n");
@@ -167,7 +169,7 @@ void saveToFile(struct Student* students, int studentCount, const char* filename
 }
 
 // This function loads the student record from a .txt file
-void loadFromFile(struct Student** students, int* studentCount, int* capacity, const char* filename) {
+void loadFromFile(Student **students, int *studentCount, int *capacity, const char *filename) {
     FILE* file = fopen(filename, "r");
     if(file == NULL) {
         printf("Could not open file for reading.\n");
@@ -176,13 +178,13 @@ void loadFromFile(struct Student** students, int* studentCount, int* capacity, c
     while (1) {
         if (*studentCount >= *capacity) {
             *capacity *= 2;
-            *students = realloc(*students, (*capacity) * sizeof(struct Student));
+            *students = realloc(*students, (*capacity) * sizeof(Student));
             if (*students == NULL) {
                 printf("Memory allocation failed.\n");
                 exit(1);
             }
         }
-        struct Student* student = &(*students)[*studentCount];
+        Student *student = &(*students)[*studentCount];
         if(fscanf(file, "%14s %14s %d", student->firstName, student->lastName, &student->rollNumber) !=3) {
             break;
         }
@@ -199,7 +201,7 @@ void loadFromFile(struct Student** students, int* studentCount, int* capacity, c
 }
 
 // This function allows the user to search for a student information using the roll number
-void searchStudent (struct Student* students, int studentCount, int rollNumber) {
+void searchStudent (Student *students, int studentCount, int rollNumber) {
     for(int i = 0; i < studentCount; i++) {
         if (students[i].rollNumber == rollNumber) {
             printf("\nWe found this student, isn't that nice! \n\nSTUDENT'S INFORMATION");
@@ -211,7 +213,7 @@ void searchStudent (struct Student* students, int studentCount, int rollNumber) 
 }
 
 // This function calculates and displays the average marks for all students
-void calculateAverageMarks(struct Student* students, int studentCount) {
+void calculateAverageMarks(Student *students, int studentCount) {
     if (studentCount == 0) {
         printf("You need to provide atleast 2 students to calculate their average marks.\n");
         return;
@@ -230,7 +232,7 @@ void calculateAverageMarks(struct Student* students, int studentCount) {
 
 // This function calculates the total marks a student gets in preparationg for the function that sorts and display the
 // marks in ascending and descending order
-int getTotalMarks(struct Student* student) {
+int getTotalMarks(Student *student) {
     int total = 0;
     for (int i = 0; i < 8; i++) {
         total += student->marks[i];
@@ -239,30 +241,30 @@ int getTotalMarks(struct Student* student) {
 }
 
 // This function enables sorting the student's marks in ascending order
-int compareAscending(const void* a, const void* b) {
-    struct Student* studentA = (struct Student*)a;
-    struct Student* studentB = (struct Student*)b;
+int compareAscending(const void *a, const void *b) {
+    Student* studentA = (Student*)a;
+    Student* studentB = (Student*)b;
     return getTotalMarks(studentA) - getTotalMarks(studentB);
 }
 
 // This function enables sorting the student's marks in descending order
-int compareDescending(const void* a, const void* b) {
-    struct Student* studentA = (struct Student*)a;
-    struct Student* studentB = (struct Student*)b;
+int compareDescending(const void *a, const void *b) {
+    Student* studentA = (Student*)a;
+    Student* studentB = (Student*)b;
     return getTotalMarks(studentB) - getTotalMarks(studentA);
 }
 
 // This function allows for sorting and displaying the record of students in chosen order
-void sortAndDisplayStudents(struct Student* students, int studentCount, int order) {
+void sortAndDisplayStudents(Student* students, int studentCount, int order) {
     if(studentCount == 0) {
         printf("No students in the record to sort.\n");
         return;
     }
     if(order == 1) {
-        qsort(students, studentCount, sizeof(struct Student), compareAscending);
+        qsort(students, studentCount, sizeof(Student), compareAscending);
         printf("\nSTUDENTS SORTED BY MARKS in ↑ ASCENDING ORDER:");
     } else if (order == 2) {
-        qsort(students, studentCount, sizeof(struct Student), compareDescending);
+        qsort(students, studentCount, sizeof(Student), compareDescending);
         printf("\nSTUDENTS SORTED BY MARKS in ↓ DESCENDING ORDER:");
     }
     for (int i = 0; i < studentCount; i++) {
@@ -280,7 +282,7 @@ void sortAndDisplayStudents(struct Student* students, int studentCount, int orde
         // Using the malloc function from the #define preprocessor directive
         // this section effects dynamic memory allocation as new students are added
         int capacity = STARTING_CAPACITY;
-        struct Student* students = malloc(capacity * sizeof(struct Student));
+        Student* students = malloc(capacity * sizeof(Student));
         if (students == NULL) {
             printf("Oop! Memory allocation failed. \n");
             return 1;
@@ -299,10 +301,11 @@ void sortAndDisplayStudents(struct Student* students, int studentCount, int orde
             printf("\n3. Modify Existing Student Record");
             printf("\n4. Display all Students");
             printf("\n5. Search for Existing Student by their Roll Number");
-            printf("\n6. Calculate Average Marks of all Students");
-            printf("\n7. Sort Students by Marks (↑ Ascending Order)");
-            printf("\n8. Sort Students by Marks (↓ Descending Order)");
-            printf("\n9. Quit\n");
+            printf("\n6. Display Average Marks of all Students per course");
+            printf("\n7. Sort and Display Students by their Marks");
+            printf("\n8. Save Student Record to File");
+            printf("\n9. Load Student Record from File");
+            printf("\n10. Quit\n");
             printf("\nChoose an option: ");
 
             int option;
@@ -340,10 +343,19 @@ void sortAndDisplayStudents(struct Student* students, int studentCount, int orde
             } else if(option == 6) {
                 calculateAverageMarks(students, studentCount);
             } else if(option == 7) {
-                sortAndDisplayStudents(students, studentCount, 1);
+                printf("\nCHOOSE SORTING ORDER:\n1. ↑ Ascending Order\n2. ↓ Descending order\nORDER: ");
+                int order;
+                scanf("%d", &order);
+                // This function Consumes the leftover \n (newline) character after the user enters the order choice
+                getchar();
+                sortAndDisplayStudents(students, studentCount, order);
             } else if(option == 8) {
-                sortAndDisplayStudents(students, studentCount, 2);
+                saveToFile(students, studentCount, "StudentRecordSystem.txt");
+                printf("Student Record saved to File.\n");
             } else if(option == 9) {
+                loadFromFile(&students, &studentCount, &capacity, "StudentRecordSystem.txt");
+                printf("Student Record Loaded from File.\n");
+            } else if(option == 10) {
                 saveToFile(students, studentCount, "StudentRecordSystem.txt");
                 break;
             } else {
