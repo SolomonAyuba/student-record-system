@@ -61,7 +61,7 @@ void inputStudentData(Student *student) {
 
     // The user is asked for a 4-digit Roll Number which is then validated.
     while (1) {
-        printf("Please enter your 4-digit Roll Number: ");
+        printf("\nPlease enter your 4-digit Roll Number: ");
         scanf("%d", &student->rollNumber);
         getchar(); // this function consumes leftover \n (newline) character after the Roll Number is entered
         // Roll Number Validation
@@ -94,7 +94,7 @@ Student *addStudent(Student *students, int *studentCount, int *capacity) {
         *capacity *= 2;
         students = realloc(students, (*capacity) * sizeof(Student));
         if (students == NULL) {
-            printf("Oops! Memory allocation failed.\n");
+            printf("\nOops! Memory allocation failed.\n");
             exit(1);
         }
     }
@@ -188,7 +188,7 @@ void saveToFile(Student *students, int studentCount, const char* filename) {
 void loadFromFile(Student **students, int *studentCount, int *capacity, const char *filename) {
     FILE* file = fopen(filename, "r");
     if(file == NULL) {
-        printf("Oops! Could not open file for reading.\n");
+        printf("\nOops! Could not open file for reading.\n");
         return;
     }
     while (1) {
@@ -196,7 +196,7 @@ void loadFromFile(Student **students, int *studentCount, int *capacity, const ch
             *capacity *= 2;
             *students = realloc(*students, (*capacity) * sizeof(Student));
             if (*students == NULL) {
-                printf("Oop! Memory allocation failed.\n");
+                printf("\nOop! Memory allocation failed.\n");
                 exit(1);
             }
         }
@@ -227,7 +227,7 @@ void searchStudent (Student *students, int studentCount, int rollNumber) {
             return;
         }
     }
-    printf("Oop! The Roll Number %d isn't assigned to a student yet. Try again!\n", rollNumber);
+    printf("\nOop! The Roll Number %d isn't assigned to a student yet. Try again!\n", rollNumber);
 }
     /*
      * This function calculates and displays the Average Marks for all students.
@@ -236,7 +236,7 @@ void searchStudent (Student *students, int studentCount, int rollNumber) {
      */
 void calculateAverageMarks(Student *students, int studentCount) {
     if (studentCount == 0) {
-        printf("Oop! You need to provide atleast 2 students to calculate the average mark.\n");
+        printf("\nOop! You need to provide atleast 2 students to calculate the average mark.\n");
         return;
     }
     int totalMarks[8] = {0};
@@ -280,7 +280,7 @@ int compareDescending(const void *a, const void *b) {
      */
 void sortAndDisplayStudents(Student* students, int studentCount, int order) {
     if(studentCount == 0) {
-        printf("Oops! No students in the record to sort.\n");
+        printf("\nOops! No students in the record to sort.\n");
         return;
     }
     if(order == 1) {
@@ -309,7 +309,7 @@ void sortAndDisplayStudents(Student* students, int studentCount, int order) {
         int capacity = STARTING_CAPACITY;
         Student* students = malloc(capacity * sizeof(Student));
         if (students == NULL) {
-            printf("Oop! Memory allocation failed. \n");
+            printf("\nOop! Memory allocation failed. \n");
             return 1;
         }
 
@@ -368,7 +368,7 @@ void sortAndDisplayStudents(Student* students, int studentCount, int order) {
             } else if(option == 6) {
                 calculateAverageMarks(students, studentCount);
             } else if(option == 7) {
-                printf("\nCHOOSE SORTING ORDER:\n1. ↑ Ascending Order\n2. ↓ Descending order\nORDER: ");
+                printf("\nCHOOSE SORTING ORDER:\n1. ↑ Ascending order\n2. ↓ Descending order\nORDER: ");
                 int order;
                 scanf("%d", &order);
                 // This function Consumes the leftover \n (newline) character after the user enters the order choice
@@ -376,14 +376,14 @@ void sortAndDisplayStudents(Student* students, int studentCount, int order) {
                 sortAndDisplayStudents(students, studentCount, order);
             } else if(option == 8) {
                 saveToFile(students, studentCount, "StudentRecordSystem.txt");
-                printf("Success!✅ Student Record saved to File.\n");
+                printf("\nSuccess!✅ Student Record saved to File.\n");
             } else if(option == 9) {
                 loadFromFile(&students, &studentCount, &capacity, "StudentRecordSystem.txt");
-                printf("Success!✅ Student Record Loaded from File.\n");
+                printf("\nSuccess!✅ Student Record Loaded from File.\n");
             } else if(option == 10) {
                 break;
             } else {
-                printf("Opp! Invalid option. Please try again.\n");
+                printf("\nOpp! Invalid option. Please try again.\n");
             }
         }
         free(students); // Dynamic memory allocation function to free memory when no longer needed.
