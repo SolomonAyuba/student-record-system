@@ -45,7 +45,7 @@ void labelCourses(char courses[8][50]) {
     */
 void inputStudentData(Student *student) {
 
-    printf("First Name: ");
+    printf("\nFirst Name: ");
     fgets(student->firstName, 15, stdin);
     student->firstName[strcspn(student->firstName, "\n")] = '\0'; // removes added newline space if present
 
@@ -65,7 +65,7 @@ void inputStudentData(Student *student) {
         scanf("%d", &student->rollNumber);
         getchar(); // this function consumes leftover \n (newline) character after the Roll Number is entered
         // Roll Number Validation
-        if(student->rollNumber >= 1000 && student->rollNumber <= 9999) {
+        if(student->rollNumber >= 0001 && student->rollNumber <= 9999) {
             break;
         } else {
             printf("\nOops! Invalid Roll Number. Please enter a valid 4-digit Number.\n");
