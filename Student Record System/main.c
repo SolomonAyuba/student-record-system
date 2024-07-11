@@ -1,4 +1,4 @@
-#include <ctype.h>
+#include <ctype.h>      // C library for character handling character functions.
 #include <stdio.h>      // C library for input/output functions
 #include <string.h>     // C library for string handling functions like 'strcpy' and 'strcat'
 #include <stdlib.h>     // C library for Dynamic Memory Allocation. Used in this code to free memory when not in use
