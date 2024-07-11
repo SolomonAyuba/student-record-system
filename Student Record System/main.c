@@ -2,12 +2,13 @@
 #include <stdio.h>      // C library for input/output functions
 #include <string.h>     // C library for string handling functions like 'strcpy' and 'strcat'
 #include <stdlib.h>     // C library for Dynamic Memory Allocation. Used in this code to free memory when not in use
-/* C preprocessor directive used to define macros. Used to create a constant of 10 students as starting capcity for
+/*
+ * C preprocessor directive used to define macros. Used to create a constant of 10 students as starting capcity for
  * dynamic memory allocation
  */
 #define STARTING_CAPACITY 10
-
-    /* The Struct function stores groups of various data types for various student. I call it Array on steriods.
+    /*
+     * The Struct function stores groups of various data types for various student. I call it Array on steriods.
      * Struct: is a C data structure initialized to store groups of data types for various students info.
      * We declare various variable and data-type as needed in the program.
      */
@@ -20,7 +21,6 @@ typedef struct {
     char courses[8][50];    // array for storing names of 8 Courses, allocating 50 character memory space for each
     int passMark;           // integer for storing Pass Mark
 } Student;
-
     /*
      * This function assigns character strings to the courses variable declared in the Struct above.
      * We define the title of the 8 courses as intended for this program
@@ -35,10 +35,10 @@ void labelCourses(char courses[8][50]) {
     strcpy(courses[6], "Sets, Logic & Algebra");
     strcpy(courses[7], "Entrepreneurship");
 }
-
-    /* This function employs the use of a pointer and prompts the Student to enter Firstname, Lastname, Roll Number and
+    /*
+     * This function employs the use of a pointer and prompts the Student to enter Firstname, Lastname, Roll Number and
      * Marks for the 8 courses.
-     * We concatenate the inputed First and Lastname then assigns the values to the variable Username
+     * We concatenate the inputed First and Lastname then assign the values to the variable Username
      * The student is then welcomed and greeted by their Username
      * We prompt the user to enter a 4-digit roll Number which is validated before proceeding
      * We display the 8 courses and prompt the user to enter value for each using a for loop
@@ -59,12 +59,12 @@ void inputStudentData(Student *student) {
 
     printf("\nGood day, %s!\n", student->userName);
 
-    // Ask's user for 4digit roll number and validates the number.
+    // The user is asked for a 4-digit Roll Number which is then validated.
     while (1) {
         printf("Please enter your 4-digit Roll Number: ");
         scanf("%d", &student->rollNumber);
-        getchar(); // this function consumes leftover \n (newline) character after the roll number is entered
-
+        getchar(); // this function consumes leftover \n (newline) character after the Roll Number is entered
+        // Roll Number Validation
         if(student->rollNumber >= 1000 && student->rollNumber <= 9999) {
             break;
         } else {
@@ -72,9 +72,9 @@ void inputStudentData(Student *student) {
         }
     }
 
-    labelCourses(student->courses); // displays courses while executing next line
+    labelCourses(student->courses); // displays courses while executing the next line
 
-    // Prompts user for the mark of the 8 courses
+    // Prompts user for the Mark of all 8 courses.
     printf("\nWhat's your score for the following 8 courses (0-100):\n");
 
     for (int i = 0; i < 8; i++) {
@@ -83,14 +83,18 @@ void inputStudentData(Student *student) {
     }
     getchar();  // This function Consumes the leftover \n (newline) character after the student enters their marks
 }
-
-// This Structure function adds students to our record utilizing the realloc() function for dynamic memory allocation
+    /*
+     * This function allows for multilple student's record to be entered.
+     * Pointers are used for Dynamic Memory allocation to keep track of the Student Count and Capacity
+     * We utilized the realloc() function to increase the STARTING_CAPACITY in the event several students are added
+     * The initial inputStudentData function is called upon and execution here, then iterated and its valued returned
+     */
 Student *addStudent(Student *students, int *studentCount, int *capacity) {
     if (*studentCount >= *capacity) {
         *capacity *= 2;
         students = realloc(students, (*capacity) * sizeof(Student));
         if (students == NULL) {
-            printf("Memory allocation failed.\n");
+            printf("Oops! Memory allocation failed.\n");
             exit(1);
         }
     }
@@ -98,8 +102,11 @@ Student *addStudent(Student *students, int *studentCount, int *capacity) {
     (*studentCount)++;
     return students;
 }
-
-// This function using the roll number removes existing students from our record
+    /*
+     * This function allows users to remove existing students from the existing record by their Roll Number.
+     * The user gets an error message if an invalid Roll Number is entered.
+     * Upon removal of a student a success message is displayed
+     */
 void removeStudent(Student students[], int *studentCount, int rollNumber) {
     int index = -1;
     for (int i = 0; i < *studentCount; i++) {
@@ -109,17 +116,21 @@ void removeStudent(Student students[], int *studentCount, int rollNumber) {
         }
     }
     if (index == -1) {
-        printf("The Student with the roll number %d doesn't exist on our record.\n", rollNumber);
+        printf("\nOop! The Student with the roll number %d doesn't exist on our record.\n", rollNumber);
         return;
     }
     for (int i = index; i < *studentCount - 1; i++) {
         students[i] = students[i+1];
     }
     (*studentCount)--;
-    printf("The Student with the roll number %d has successfully been removed.\n", rollNumber);
+    printf("\nSuccess! The Student with the roll number %d has been removed.\n", rollNumber);
 }
-
-// This function using the roll number modifies existing student's information
+    /*
+     * This function modifies an existing student's record using the Roll Number
+     * An error message is displayed if the user enters an invalid Roll Number
+     * A status update message is shown while the user modifies the student's Record
+     * The inputStudentData funtion is called upon to prompt and store the modified changes
+     */
 void modifyStudent(Student students[], int studentCount, int rollNumber) {
     int index = -1;
     for (int i = 0; i < studentCount; i++) {
@@ -129,33 +140,37 @@ void modifyStudent(Student students[], int studentCount, int rollNumber) {
         }
     }
     if (index == -1) {
-        printf("The Student with the roll number %d doesn't exist on our record.\n", rollNumber);
+        printf("\nOops! The Student with the roll number %d doesn't exist on our record.\n", rollNumber);
         return;
     } else {
-        printf("Modifying student with the roll number %d:\n", rollNumber);
+        printf("\nModifying student with the roll number %d:\n", rollNumber);
         inputStudentData(&students[index]);
     }
 }
-
-// This function displays student result as inputed by the student
+    /*
+     * This function displays students result.
+     * The Student Number, username, Roll Number, and Result status is displayed in an organized fashion
+     * Students who score above 39 are award a pass remark, else a failed remark.
+     */
 void displayStudentResults(Student *student) {
     printf("\n   Fullname: %s \n   Roll Number: %d\nSEMESTER RESULT\n", student->userName, student->rollNumber);
-    student->passMark = 40;     // Declaring the pass mark as 40
-
+    student->passMark = 40;     // Declaring the pass Mark as 40
+    // Iteration using for loop to display all 8 courses Marks
     for (int i = 0; i < 8; i++) {
         if (student->marks[i] >= student->passMark) {
-            printf("  ✅ Hurray! you passed: %s\n", student->courses[i]);
+            printf("  Score = %d  ✅\tHurray! you passed: %s\n", student->marks[i], student->courses[i]);
         } else {
-            printf("  ❌ Sorry, you failed: %s\n", student->courses[i]);
+            printf("  Score = %d  ❌\tSorry, you failed: %s\n", student->marks[i], student->courses[i]);
         }
     }
 }
-
-// This function saves the students full name, roll number, and marks in a .txt file.
+    /*
+     * This function writes/saves the Students Record (Full Name, Roll Number, and Marks) to a .txt file.
+     */
 void saveToFile(Student *students, int studentCount, const char* filename) {
     FILE* file = fopen(filename, "w");
     if(file == NULL) {
-        printf("Could not open file for writing.\n");
+        printf("Oops! Could not open file for writing.\n");
         return;
     }
     for (int i = 0; i < studentCount; i++) {
@@ -167,12 +182,13 @@ void saveToFile(Student *students, int studentCount, const char* filename) {
     }
     fclose(file);
 }
-
-// This function loads the student record from a .txt file
+    /*
+     * This function reads/loads the student record from a .txt file
+     */
 void loadFromFile(Student **students, int *studentCount, int *capacity, const char *filename) {
     FILE* file = fopen(filename, "r");
     if(file == NULL) {
-        printf("Could not open file for reading.\n");
+        printf("Oops! Could not open file for reading.\n");
         return;
     }
     while (1) {
@@ -180,7 +196,7 @@ void loadFromFile(Student **students, int *studentCount, int *capacity, const ch
             *capacity *= 2;
             *students = realloc(*students, (*capacity) * sizeof(Student));
             if (*students == NULL) {
-                printf("Memory allocation failed.\n");
+                printf("Oop! Memory allocation failed.\n");
                 exit(1);
             }
         }
@@ -199,8 +215,10 @@ void loadFromFile(Student **students, int *studentCount, int *capacity, const ch
     }
     fclose(file);
 }
-
-// This function allows the user to search for a student information using the roll number
+    /*
+     * This function allows users to search for a student Record using their Roll Number
+     * An error message is displayed if the user enters an invalid Roll Number
+     */
 void searchStudent (Student *students, int studentCount, int rollNumber) {
     for(int i = 0; i < studentCount; i++) {
         if (students[i].rollNumber == rollNumber) {
@@ -211,11 +229,14 @@ void searchStudent (Student *students, int studentCount, int rollNumber) {
     }
     printf("Oop! The Roll Number %d isn't assigned to a student yet. Try again!\n", rollNumber);
 }
-
-// This function calculates and displays the average marks for all students
+    /*
+     * This function calculates and displays the Average Marks for all students.
+     * An error message is entered is there's no student to calculate average mark for.
+     * The average marks is displayed in floating point value once there are students records
+     */
 void calculateAverageMarks(Student *students, int studentCount) {
     if (studentCount == 0) {
-        printf("You need to provide atleast 2 students to calculate their average marks.\n");
+        printf("Oop! You need to provide atleast 2 students to calculate the average mark.\n");
         return;
     }
     int totalMarks[8] = {0};
@@ -224,14 +245,15 @@ void calculateAverageMarks(Student *students, int studentCount) {
             totalMarks[j] += students[i].marks[j];
         }
     }
-    printf("\nAVERAGE MAKRS OF ALL STUDENT FOR EACH COURSE:\n");
+    printf("\nAVERAGE MARKS OF ALL STUDENT FOR EACH COURSE:\n");
     for (int j = 0; j < 8; j++) {
         printf("  %s: %.2f\n", students[0].courses[j], (float)totalMarks[j] / studentCount);
     }
 }
-
-// This function calculates the total marks a student gets in preparationg for the function that sorts and display the
-// marks in ascending and descending order
+    /*
+     * This function calculates the Total Marks a student gets in preparation for the function that sorts
+     * and displays the Marks in ascending/descending order
+    */
 int getTotalMarks(Student *student) {
     int total = 0;
     for (int i = 0; i < 8; i++) {
@@ -239,25 +261,26 @@ int getTotalMarks(Student *student) {
     }
     return total;
 }
-
-// This function enables sorting the student's marks in ascending order
+     // This function enables sorting the student's Marks in an ↑ Ascending Order
 int compareAscending(const void *a, const void *b) {
     Student* studentA = (Student*)a;
     Student* studentB = (Student*)b;
     return getTotalMarks(studentA) - getTotalMarks(studentB);
 }
-
-// This function enables sorting the student's marks in descending order
+    // This function enables sorting the student's Marks in a ↓ Descending Order
 int compareDescending(const void *a, const void *b) {
     Student* studentA = (Student*)a;
     Student* studentB = (Student*)b;
     return getTotalMarks(studentB) - getTotalMarks(studentA);
 }
-
-// This function allows for sorting and displaying the record of students in chosen order
+    /*
+     * This function allows for sorting and displaying the records of students in the chosen order
+     * If there are no students, an error message is displayed
+     * Otherwise, the user is presented with the record in the chosen order
+     */
 void sortAndDisplayStudents(Student* students, int studentCount, int order) {
     if(studentCount == 0) {
-        printf("No students in the record to sort.\n");
+        printf("Oops! No students in the record to sort.\n");
         return;
     }
     if(order == 1) {
@@ -271,16 +294,18 @@ void sortAndDisplayStudents(Student* students, int studentCount, int order) {
         displayStudentResults(&students[i]);
     }
 }
-
-    /* The main method that houses and drives the established data structure, functions, dynamic memory allocation
-     * file saving and loading functions, record search, and calculaton and sorting functions
+    /*
+     * This is main function that houses and drives the declared data structure, functions, dynamic memory allocation
+     * file write-read functions, record search, calculaton and sorting functions etc.
+     * The output of the program initiates in this function starting from displaying a welcome & the program name
      */
     int main(void){
         char programName[50] = "Interactive Student Record System v1.0";
         printf("Hello, Welcome to the %s\n", programName);
-
-        // Using the malloc function from the #define preprocessor directive
-        // this section effects dynamic memory allocation as new students are added
+        /*
+         * Using the malloc function from the #define preprocessor directive header, this section effects the dynamic
+         * memory allocation as new students are added.
+        */
         int capacity = STARTING_CAPACITY;
         Student* students = malloc(capacity * sizeof(Student));
         if (students == NULL) {
@@ -288,12 +313,12 @@ void sortAndDisplayStudents(Student* students, int studentCount, int order) {
             return 1;
         }
 
-        int studentCount = 0;
+        int studentCount = 0;   // The studentCount integer variable is initiated an assigned the value 0
 
-        // The function to read the saved records from the file indicated
+        // The read file function to read the saved records from the file indicated
         loadFromFile(&students, &studentCount, &capacity, "StudentRecordSystem.txt");
 
-        // This loop section executes the established functions based on the choice of the user
+        // While the use picks any of the listed options, the functions as declared prior is engaged and executed
         while (1) {
             printf("\nWould you like to:");
             printf("\n1. Add a New Student");
@@ -315,14 +340,14 @@ void sortAndDisplayStudents(Student* students, int studentCount, int order) {
             if (option == 1) {
                 students = addStudent(students, &studentCount, &capacity);
             } else if(option == 2) {
-                printf("Enter roll number of student to remove: ");
+                printf("Enter Roll Number of student to remove: ");
                 int rollNumber;
                 scanf("%d", &rollNumber);
                 // This function Consumes the leftover \n (newline) character after the student enters their rollNumber
                 getchar();
                 removeStudent(students, &studentCount, rollNumber);
             } else if(option == 3) {
-                printf("Enter roll number of student to modify: ");
+                printf("Enter Roll Number of student to modify: ");
                 int rollNumber;
                 scanf("%d", &rollNumber);
                 // This function Consumes the leftover \n (newline) character after the student enters the rollNumber
@@ -351,30 +376,34 @@ void sortAndDisplayStudents(Student* students, int studentCount, int order) {
                 sortAndDisplayStudents(students, studentCount, order);
             } else if(option == 8) {
                 saveToFile(students, studentCount, "StudentRecordSystem.txt");
-                printf("Student Record saved to File.\n");
+                printf("Success!✅ Student Record saved to File.\n");
             } else if(option == 9) {
                 loadFromFile(&students, &studentCount, &capacity, "StudentRecordSystem.txt");
-                printf("Student Record Loaded from File.\n");
+                printf("Success!✅ Student Record Loaded from File.\n");
             } else if(option == 10) {
-                saveToFile(students, studentCount, "StudentRecordSystem.txt");
                 break;
             } else {
                 printf("Opp! Invalid option. Please try again.\n");
             }
         }
-
         free(students); // Dynamic memory allocation function to free memory when no longer needed.
-
-        printf("\nHurray! you registered '%d' number of student.\n\nThank you for using our %s Software\n"
+        /*
+         * Upon selecting Quit, the user gets the a sum of the total number of students on the Record System
+         * followed by a thank your message.
+         * The name of Group 6 members who worked on this program is listed, alongside the course, lecturer,
+         * department and institution.
+        */
+        printf("\n🎊Hurray!🎊 you registered '%d' number of student.\n\nThank you for using our %s Software\n"
                "\n© Solomon Ayuba | Okong Olugbenga Enang | Abel Odiri Odemudia | Christiana Chatt Richards "
                "| Olufemi Adesope"
-               "\nData Science Department \nComputer Programming I (Group 6)", studentCount, programName);
+               "\nData Science Department \nComputer Programming I (Group 6)\n"
+               "Lecturer: Oluwatoyin Adelakun-Adeyemo  ", studentCount, programName);
 
-
-        /* I CAN'T GET THE FILE READ AND WRITE FUNCTION TO WORK. KINDLY REVERT IF IT'S THE SAME CASE ON YOUR PC.
-         * All Question through 8 has been solved in this code but i can't get question 6 (file operation) to save
+        /*
+         * I've reevaluated the code and given a detailed description/comment
+         * Question 6: File operation, is the pending function yet to work 100% in the project
+         * Although I implemented the read and write to .txt file function it doesn't work as intended.
+         * You guys can take it up from here while we prepare for a virtual explanatory meeting before presentation.
          */
-
         return 0;
-
 }
