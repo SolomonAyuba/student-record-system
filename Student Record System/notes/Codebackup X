@@ -315,6 +315,9 @@ void sortAndDisplayStudents(Student* students, int studentCount, int order) {
 
         int studentCount = 0;   // The studentCount integer variable is initiated an assigned the value 0
 
+        // The read file function to read the saved records from the file indicated - REVIEW THIS LINE OF CODE
+       // loadFromFile(&students, &studentCount, &capacity, "StudentRecordSystem.txt");
+
         // While the use picks any of the listed options, the functions as declared prior is engaged and executed
         while (1) {
             printf("\nWould you like to:");
@@ -397,7 +400,10 @@ void sortAndDisplayStudents(Student* students, int studentCount, int order) {
                "Lecturer: Oluwatoyin Adelakun-Adeyemo  ", studentCount, programName);
 
         /*
-         * Ms Olufemi Adesope give us Full Marks in Jesus Name, Amen😇
+         * I've reevaluated the code and given a detailed description/comment
+         * Question 6: File operation, is the pending function yet to work 100% in the project
+         * Although I implemented the read and write to .txt file function it doesn't work as intended.
+         * You guys can take it up from here while we prepare for a virtual explanatory meeting before presentation.
          */
         return 0;
 }
