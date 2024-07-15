@@ -21,6 +21,7 @@ typedef struct {
     int passMark;           // integer for storing Pass Mark
 } Student;
     /*
+     * Since we can't assign values to variables in the Struct function(data type) above we
      * This function assigns character strings to the courses variable declared in the Struct above.
      * We define the title of the 8 courses as intended for this program
      */
@@ -86,7 +87,7 @@ void inputStudentData(Student *student) {
      * This function allows for multilple student's record to be entered.
      * Pointers are used for Dynamic Memory allocation to keep track of the Student Count and Capacity
      * We utilized the realloc() function to increase the STARTING_CAPACITY in the event several students are added
-     * The initial inputStudentData function is called upon and execution here, then iterated and its valued returned
+     * The initial inputStudentData function is called upon and executed here, then iterated and its valued returned
      */
 Student *addStudent(Student *students, int *studentCount, int *capacity) {
     if (*studentCount >= *capacity) {
@@ -393,10 +394,10 @@ void sortAndDisplayStudents(Student* students, int studentCount, int order) {
                "\n© Solomon Ayuba | Okong Olugbenga Enang | Abel Odiri Odemudia | Christiana Chatt Richards "
                "| Olufemi Adesope"
                "\nData Science Department \nComputer Programming I (Group 6)\n"
-               "Lecturer: Oluwatoyin Adelakun-Adeyemo  ", studentCount, programName);
+               "Lecturer: Oluwatoyin Adelakun Adeyemo  ", studentCount, programName);
 
         /*
-         * Ms Olufemi Adesope give us Full Marks in Jesus Name, Amen😇
+         * Dr. Oluwatoyin Adelakun Adeyemo give us Full Marks in Jesus Name, Amen 😇
          */
         return 0;
 }

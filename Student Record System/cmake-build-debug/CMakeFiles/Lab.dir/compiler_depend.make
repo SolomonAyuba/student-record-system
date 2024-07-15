@@ -6,7 +6,6 @@ CMakeFiles/Lab.dir/main.c.o: /Users/solomonayuba/Desktop/Student\ Record\ System
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/AvailabilityInternal.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/AvailabilityVersions.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_ctermid.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_ctype.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_types.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_types/_intmax_t.h \
@@ -22,7 +21,6 @@ CMakeFiles/Lab.dir/main.c.o: /Users/solomonayuba/Desktop/Student\ Record\ System
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/arm/endian.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/arm/signal.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/arm/types.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/ctype.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/libkern/_OSByteOrder.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/libkern/arm/OSByteOrder.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/mach/arm/_structs.h \
@@ -33,7 +31,6 @@ CMakeFiles/Lab.dir/main.c.o: /Users/solomonayuba/Desktop/Student\ Record\ System
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/machine/signal.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/machine/types.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/malloc/_malloc.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/runetype.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/secure/_common.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/secure/_stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/secure/_string.h \
@@ -78,7 +75,6 @@ CMakeFiles/Lab.dir/main.c.o: /Users/solomonayuba/Desktop/Student\ Record\ System
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_uintptr_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_va_list.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_wchar_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_wint_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/appleapiopts.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/cdefs.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/resource.h \
@@ -128,6 +124,12 @@ CMakeFiles/Lab.dir/main.c.o: /Users/solomonayuba/Desktop/Student\ Record\ System
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_id_t.h:
 
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/libkern/arm/OSByteOrder.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/malloc/_malloc.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_dev_t.h:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_ct_rune_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_pid_t.h:
@@ -164,14 +166,6 @@ CMakeFiles/Lab.dir/main.c.o: /Users/solomonayuba/Desktop/Student\ Record\ System
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/secure/_string.h:
 
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_dev_t.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/libkern/arm/OSByteOrder.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/malloc/_malloc.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/runetype.h:
-
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/machine/endian.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/wait.h:
@@ -179,8 +173,6 @@ CMakeFiles/Lab.dir/main.c.o: /Users/solomonayuba/Desktop/Student\ Record\ System
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_ctermid.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_symbol_aliasing.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_wint_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/machine/_types.h:
 
@@ -198,11 +190,9 @@ CMakeFiles/Lab.dir/main.c.o: /Users/solomonayuba/Desktop/Student\ Record\ System
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/libkern/_OSByteOrder.h:
 
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/mach/arm/_structs.h:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/arm/endian.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_ctype.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/ctype.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/arm/arch.h:
 
@@ -226,10 +216,6 @@ CMakeFiles/Lab.dir/main.c.o: /Users/solomonayuba/Desktop/Student\ Record\ System
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/stdio.h:
 
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_u_int32_t.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/string.h:
-
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/strings.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/arm/types.h:
@@ -238,11 +224,9 @@ CMakeFiles/Lab.dir/main.c.o: /Users/solomonayuba/Desktop/Student\ Record\ System
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_stdio.h:
 
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/appleapiopts.h:
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_u_int32_t.h:
 
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/secure/_stdio.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/Availability.h:
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/string.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/secure/_common.h:
 
@@ -254,6 +238,10 @@ CMakeFiles/Lab.dir/main.c.o: /Users/solomonayuba/Desktop/Student\ Record\ System
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/AvailabilityVersions.h:
 
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/mach/arm/_structs.h:
-
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_types/_uint32_t.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/appleapiopts.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/secure/_stdio.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/Availability.h:
