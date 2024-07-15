@@ -397,7 +397,7 @@ void sortAndDisplayStudents(Student* students, int studentCount, int order) {
                "Lecturer: Oluwatoyin Adelakun Adeyemo  ", studentCount, programName);
 
         /*
-         * Dr. Oluwatoyin Adelakun Adeyemo give us Full Marks in Jesus Name, Amen 😇
+         * Dr. Oluwatoyin Adelakun Adeyemo give us Full Marks in Jesus Name, Amen 😇 Ameen
          */
         return 0;
 }
