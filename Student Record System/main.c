@@ -391,7 +391,7 @@ void sortAndDisplayStudents(Student* students, int studentCount, int order) {
          * department and institution.
         */
         printf("\n🎊Hurray!🎊 you registered '%d' number of student.\n\nThank you for using our %s Software\n"
-               "\n© Solomon Ayuba | Okong Olugbenga Enang | Abel Odiri Odemudia | Christiana Chatt Richards "
+               "\n© Solomon Ayuba | Okon Olugbenga Enang | Abel Odiri Odemudia | Christiana Chatt Richards "
                "| Olufemi Adesope"
                "\nData Science Department \nComputer Programming I (Group 6)\n"
                "Lecturer: Oluwatoyin Adelakun Adeyemo  ", studentCount, programName);
