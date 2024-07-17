@@ -61,11 +61,11 @@ void inputStudentData(Student *student) {
 
     // The user is asked for a 4-digit Roll Number which is then validated.
     while (1) {
-        printf("\nPlease enter your 4-digit Roll Number: ");
+        printf("\nPlease enter your 4-digit Roll Number (starting from 1000): ");
         scanf("%d", &student->rollNumber);
         getchar(); // this function consumes leftover \n (newline) character after the Roll Number is entered
         // Roll Number Validation
-        if(student->rollNumber >= 0001 && student->rollNumber <= 9999) {
+        if(student->rollNumber >= 1000 && student->rollNumber <= 9999) {
             break;
         } else {
             printf("\nOops! Invalid Roll Number. Please enter a valid 4-digit Number.\n");
