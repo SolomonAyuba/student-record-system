@@ -1,3 +1,3 @@
-/Users/solomonayuba/Desktop/Student Record System/Student Record System/cmake-build-debug/CMakeFiles/Lab.dir
-/Users/solomonayuba/Desktop/Student Record System/Student Record System/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/solomonayuba/Desktop/Student Record System/Student Record System/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/aodemudia/CLionProjects/StudentRecordSystem5/Student Record System/cmake-build-debug/CMakeFiles/Lab.dir
+/Users/aodemudia/CLionProjects/StudentRecordSystem5/Student Record System/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/aodemudia/CLionProjects/StudentRecordSystem5/Student Record System/cmake-build-debug/CMakeFiles/rebuild_cache.dir

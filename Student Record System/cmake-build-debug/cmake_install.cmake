@@ -1,4 +1,4 @@
-# Install script for directory: /Users/solomonayuba/Desktop/Student Record System/Student Record System
+# Install script for directory: /Users/aodemudia/CLionProjects/StudentRecordSystem5/Student Record System
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/solomonayuba/Desktop/Student Record System/Student Record System/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/aodemudia/CLionProjects/StudentRecordSystem5/Student Record System/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
