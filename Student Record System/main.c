@@ -135,7 +135,7 @@ void modifyStudent(Student students[], int studentCount, int rollNumber) {
     int index = -1;
     for (int i = 0; i < studentCount; i++) {
         if (students[i].rollNumber == rollNumber) {
-            index = 1;
+            index = i;
             break;
         }
     }
