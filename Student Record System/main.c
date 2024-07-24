@@ -313,7 +313,8 @@ void sortAndDisplayStudents(Student* students, int studentCount, int order) {
             return 1;
         }
 
-        int studentCount = 0;   // The studentCount integer variable is initiated an assigned the value 0
+        // The studentCount integer variable is initiated an assigned the value 0
+        int studentCount = 0;
 
         // While the use picks any of the listed options, the functions as declared prior is engaged and executed
         while (1) {
