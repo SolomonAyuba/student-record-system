@@ -2,7 +2,7 @@ This project was initiated using CLion IDE. An open-source IDE of JetBrains (htt
 
 **Project Title: Student Record System**.
 
-A simple Student Record System in C that allows users to manage student information. The program has seeks to implement the following functionalities:
+A simple Student Record System in C that allows users to manage student information. The program seeks to implement the following functionalities:
 
 **1.	Initial Setup:**
   -	Displays a welcome message and prompts the user to enter their name then greet the user by their name.
