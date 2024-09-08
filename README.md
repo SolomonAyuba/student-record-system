@@ -1,5 +1,7 @@
-This project was initiated using CLion IDE. An open-source IDE of JetBrains (https://www.jetbrains.com/clion/).
+# Student Record System
+This project was initiated using CLion IDE. An open-source IDE of [JetBrains](https://www.jetbrains.com/clion/).
 
+## Overview
 **Project Title: Student Record System**.
 
 A simple Student Record System in C that allows users to manage student information. The program seeks to implement the following functionalities:
@@ -31,4 +33,4 @@ A simple Student Record System in C that allows users to manage student informat
   -	Calculate and display the average marks for all students.
   -	Provide an option to sort student records based on marks in ascending or descending order
 
-
+[© Miva Open University](https://miva.university/) 2024
