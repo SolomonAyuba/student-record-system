@@ -1,0 +1,117 @@
+#include <stdio.h>      // C library for input/output functions
+#include <string.h>     // C library for string handling functions like 'strcpy' and 'strcat'
+#define MAX_STUDENTS 100
+
+struct Student {
+    // Struct: is a C data structure initialized to store groups of data types for various students' info.
+
+    // Variable, Data-type declaration
+    char firstName[15];     // allocates 15 character memory space for student's first name input
+    char lastName[15];      // allocates 15 character memory space for student's last name input
+    char userName[30];      // allocates 30 character memory space for both first and last name
+
+    int rollNumber;         // single integer for student roll number
+    int marks[8];           // array for storing marks for 8 courses
+
+    char courses[8][50];    // array for storing names of 8 courses, allocating 50 character mem space for each
+    int passMark;
+};
+
+void initializeCourses(char courses[8][50]) {
+    strcpy(courses[0], "Intro to Data Science");
+    strcpy(courses[1], "Intro to R Programming");
+    strcpy(courses[2], "Computer Programming I");
+    strcpy(courses[3], "Discrete Structures");
+    strcpy(courses[4], "Intro to Numerical Analysis");
+    strcpy(courses[5], "Mathematical Methods I");
+    strcpy(courses[6], "Sets, Logic & Algebra");
+    strcpy(courses[7], "Entrepreneurship");
+}
+
+void inputStudentData(struct Student* student) {
+    // Prompt student for their first name
+    printf("First Name: ");
+    fgets(student->firstName, 15, stdin);
+    student->firstName[strcspn(student->firstName, "\n")] = '\0'; // removes added newline space if present
+
+    // Prompt student for their last name
+    printf("Last Name: ");
+    fgets(student->lastName, 15, stdin);
+    student->lastName[strcspn(student->lastName, "\n")] = '\0';  // removes added newline space if present
+
+    // Concatenate firstName and lastName as userName
+    strcpy(student->userName, student->firstName);
+    strcat(student->userName, " ");
+    strcat(student->userName, student->lastName);
+
+    // Greet student printing their concatenated username
+    printf("\n");  // Inserts empty line before next code
+    printf("Good day, %s!\n", student->userName);
+
+    // Prompt student to enter their roll number
+    printf("\nPlease enter your 4-digit Roll Number: ");
+    scanf("%d", &student->rollNumber);
+    // This function Consumes the leftover \n (newline) character after the student enters the roll number.
+    // We used getchar(); function instead of fflush(stdin); function in this project for ease.
+    getchar();
+
+    // Initialize courses
+    initializeCourses(student->courses);
+
+    printf("\nWhat's your score for the following 8 courses (0-100):\n");
+
+    // Prompts student to input scores for each 8 courses
+    for (int i = 0; i < 8; i++) {
+        printf("[%d] %s: ", i + 1, student->courses[i]);
+        scanf("%d", &student->marks[i]);
+    }
+    getchar();  // This function Consumes the leftover \n (newline) character after the student enters their marks
+}
+
+void displayStudentResults(struct Student* student) {
+    printf("\nResults for %s with Roll Number [%d] is here:\n", student->userName, student->rollNumber);
+    student->passMark = 40;     // Declaring the pass mark as 40
+
+    // Displays the results of the courses
+    for (int i = 0; i < 8; i++) {
+        if (student->marks[i] >= student->passMark) {
+            printf("Hurray! You passed: %s\n", student->courses[i]);
+        } else {
+            printf("Sorry, you failed: %s\n", student->courses[i]);
+        }
+    }
+}
+
+int main(void) {
+    // The main method section where we use the different attributes from the Struct session above
+    /* This section displays a welcome message and prompts the user to enter their full name.
+     * After which the user is greeted by the entered name */
+
+    char programName[50] = "Interactive Student Record System v1.0";
+    printf("Hello, Welcome to the %s\n", programName);
+
+    struct Student students[100]; // Array to store up to 100 students
+    int studentCount = 0;
+
+    while (1) {
+        printf("\nEnter information for student %d:\n", studentCount + 1);
+        inputStudentData(&students[studentCount]);
+        displayStudentResults(&students[studentCount]);
+
+        studentCount++;
+
+        printf("\nEnter 'q' to quit or any other key to continue: ");
+        char choice = getchar();        // getchar() function is used to take in a single character from the student
+        getchar();  // This function Consumes the leftover \n (newline) character after the student enters a character
+        if (choice == 'q' || choice == 'Q') {
+            break;
+        }
+    }
+
+    printf("\nYou entered data for %d students.\n", studentCount);
+
+    // we attempt question 4b and the rest from here onwardsddssss
+
+
+    return 0;
+}

@@ -1,3 +1,4 @@
+#include <ctype.h>      // C library for character handling character functions.
 #include <stdio.h>      // C library for input/output functions
 #include <string.h>     // C library for string handling functions like 'strcpy' and 'strcat'
 #include <stdlib.h>     // C library for Dynamic Memory Allocation. Used in this code to free memory when not in use
@@ -21,7 +22,6 @@ typedef struct {
     int passMark;           // integer for storing Pass Mark
 } Student;
     /*
-     * Since we can't assign values to variables in the Struct function(data type) above we
      * This function assigns character strings to the courses variable declared in the Struct above.
      * We define the title of the 8 courses as intended for this program
      */
@@ -61,11 +61,11 @@ void inputStudentData(Student *student) {
 
     // The user is asked for a 4-digit Roll Number which is then validated.
     while (1) {
-        printf("\nPlease enter your 4-digit Roll Number (starting from 1000): ");
+        printf("\nPlease enter your 4-digit Roll Number: ");
         scanf("%d", &student->rollNumber);
         getchar(); // this function consumes leftover \n (newline) character after the Roll Number is entered
         // Roll Number Validation
-        if(student->rollNumber >= 1000 && student->rollNumber <= 9999) {
+        if(student->rollNumber >= 0001 && student->rollNumber <= 9999) {
             break;
         } else {
             printf("\nOops! Invalid Roll Number. Please enter a valid 4-digit Number.\n");
@@ -87,7 +87,7 @@ void inputStudentData(Student *student) {
      * This function allows for multilple student's record to be entered.
      * Pointers are used for Dynamic Memory allocation to keep track of the Student Count and Capacity
      * We utilized the realloc() function to increase the STARTING_CAPACITY in the event several students are added
-     * The initial inputStudentData function is called upon and executed here, then iterated and its valued returned
+     * The initial inputStudentData function is called upon and execution here, then iterated and its valued returned
      */
 Student *addStudent(Student *students, int *studentCount, int *capacity) {
     if (*studentCount >= *capacity) {
@@ -135,7 +135,7 @@ void modifyStudent(Student students[], int studentCount, int rollNumber) {
     int index = -1;
     for (int i = 0; i < studentCount; i++) {
         if (students[i].rollNumber == rollNumber) {
-            index = i;
+            index = 1;
             break;
         }
     }
@@ -313,8 +313,10 @@ void sortAndDisplayStudents(Student* students, int studentCount, int order) {
             return 1;
         }
 
-        // The studentCount integer variable is initiated an assigned the value 0
-        int studentCount = 0;
+        int studentCount = 0;   // The studentCount integer variable is initiated an assigned the value 0
+
+        // The read file function to read the saved records from the file indicated - REVIEW THIS LINE OF CODE
+       // loadFromFile(&students, &studentCount, &capacity, "StudentRecordSystem.txt");
 
         // While the use picks any of the listed options, the functions as declared prior is engaged and executed
         while (1) {
@@ -392,13 +394,16 @@ void sortAndDisplayStudents(Student* students, int studentCount, int order) {
          * department and institution.
         */
         printf("\n🎊Hurray!🎊 you registered '%d' number of student.\n\nThank you for using our %s Software\n"
-               "\n© Solomon Ayuba | Okon Olugbenga Enang | Abel Odiri Odemudia | Christiana Chatt Richards "
+               "\n© Solomon Ayuba | Okong Olugbenga Enang | Abel Odiri Odemudia | Christiana Chatt Richards "
                "| Olufemi Adesope"
                "\nData Science Department \nComputer Programming I (Group 6)\n"
-               "Lecturer: Oluwatoyin Adelakun Adeyemo  ", studentCount, programName);
+               "Lecturer: Oluwatoyin Adelakun-Adeyemo  ", studentCount, programName);
 
         /*
-         * Dr. Mrs Oluwatoyin Adelakun Adeyemo give us Full Marks in Jesus Name, Amen 😇 Ameen
+         * I've reevaluated the code and given a detailed description/comment
+         * Question 6: File operation, is the pending function yet to work 100% in the project
+         * Although I implemented the read and write to .txt file function it doesn't work as intended.
+         * You guys can take it up from here while we prepare for a virtual explanatory meeting before presentation.
          */
         return 0;
 }
